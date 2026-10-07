@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.github.ochtw</groupId>
+    <artifactId>bio-howq-ai-daily</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>bio-howq-ai-daily</name>
+    <description>Build-in-open engineering log for howq-ai-daily.</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jbake.version>2.7.0</jbake.version>
+        <jbake.source>${project.basedir}/src/main/jbake</jbake.source>
+        <jbake.output>${project.build.directory}/website</jbake.output>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jbake</groupId>
+                <artifactId>jbake-maven-plugin</artifactId>
+                <version>${jbake.version}</version>
+                <configuration>
+                    <inputDirectory>${jbake.source}</inputDirectory>
+                    <outputDirectory>${jbake.output}</outputDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>bake-site</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>serve</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jbake</groupId>
+                        <artifactId>jbake-maven-plugin</artifactId>
+                        <version>${jbake.version}</version>
+                        <configuration>
+                            <inputDirectory>${jbake.source}</inputDirectory>
+                            <outputDirectory>${jbake.output}</outputDirectory>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>serve-site</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>inline</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

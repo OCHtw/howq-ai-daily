@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="${config.site_description}">
+  <title>${config.site_title} — ${config.site_subtitle}</title>
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <#assign rootPath = "">
+  <#assign currentSection = "logs">
+  <#include "includes/header.ftl">
+  <#include "includes/tag-ui.ftl">
+  <main>
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow">BUILD IN OPEN</p>
+          <h1>把 AI 帶進<br>餐飲微小店家的工程日誌。</h1>
+          <p class="hero-copy">記錄產品決策、資料工程、Open Data、AI 實驗，以及那些真正做下去之後才會碰到的問題。</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#latest">看最新進度</a>
+            <a class="button button-quiet" href="about.html">這個專案在做什麼</a>
+          </div>
+        </div>
+        <aside class="hero-note" aria-label="專案原則">
+          <span class="status-dot"></span>
+          <p>現在正在做</p>
+          <strong>小步公開、持續累積，不把開發成果藏到「完成那天」才出現。</strong>
+        </aside>
+      </div>
+    </section>
+
+    <section class="shell content-section" id="latest">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">LATEST LOGS</p>
+          <h2>最近的開發紀錄</h2>
+        </div>
+        <p>文章直接寫 Markdown，JBake 產生靜態 HTML。</p>
+      </div>
+
+      <div class="post-list">
+        <#if published_posts?has_content>
+          <#list published_posts as post>
+            <article class="post-card">
+              <div class="post-meta">
+                <time datetime="${post.date?string('yyyy-MM-dd')}">${post.date?string('yyyy.MM.dd')}</time>
+                <#if post.category??><span>${post.category}</span></#if>
+              </div>
+              <h3><a href="${post.uri}">${post.title}</a></h3>
+              <#if post.summary??><p>${post.summary}</p></#if>
+              <a class="text-link" href="${post.uri}">閱讀紀錄 →</a>
+            </article>
+          </#list>
+        <#else>
+          <div class="empty-state">第一篇日誌準備中。</div>
+        </#if>
+      </div>
+    </section>
+    <div class="shell">
+      <@renderTagCloud rootPath="" />
+    </div>
+   <br/>
+   <br/>
+  </main>
+
+  <#include "includes/footer.ftl">
+</body>
+</html>
