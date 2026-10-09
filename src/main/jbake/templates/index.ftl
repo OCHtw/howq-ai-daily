@@ -17,8 +17,8 @@
       <div class="shell hero-grid">
         <div>
           <p class="eyebrow">BUILD IN OPEN</p>
-          <h1>把 AI 帶進<br>餐飲微小店家的工程日誌。</h1>
-          <p class="hero-copy">記錄產品決策、資料工程、Open Data、AI 實驗，以及那些真正做下去之後才會碰到的問題。</p>
+          <h1>把 AI 帶進<br>餐飲微小店家的挑戰日記。</h1>
+          <p class="hero-copy">寫下產品想法、紀錄ＡＩ探索、模擬ＥＳＧ實驗、思考ＯPEN ＤATA運用，也許是開發瑣事或是那些真正做下去之後才會碰到的問題。</p>
           <div class="hero-actions">
             <a class="button button-primary" href="#latest">看最新進度</a>
             <a class="button button-quiet" href="about.html">這個專案在做什麼</a>
@@ -27,7 +27,7 @@
         <aside class="hero-note" aria-label="專案原則">
           <span class="status-dot"></span>
           <p>現在正在做</p>
-          <strong>小步公開、持續累積，不把開發成果藏到「完成那天」才出現。</strong>
+          <strong>小步公開、持續累積，透過分享與交流促進更多可能，讓成果有「完成那天」。</strong>
         </aside>
       </div>
     </section>
@@ -36,9 +36,9 @@
       <div class="section-heading">
         <div>
           <p class="eyebrow">LATEST LOGS</p>
-          <h2>最近的開發紀錄</h2>
+          <h2>最近的腳步</h2>
         </div>
-        <p>文章直接寫 Markdown，JBake 產生靜態 HTML。</p>
+        <p>日誌採 Markdown 格式，JBake 產生靜態 HTML。</p>
       </div>
 
       <div class="post-list">
