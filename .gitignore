@@ -18,3 +18,5 @@ target/
 # Temporary files
 *.tmp
 *.bak
+/README-NEWS-DATE-FIX.md
+/README-NEWS-IMPORTER.md

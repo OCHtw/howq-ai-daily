@@ -22,7 +22,7 @@
 
         <div class="post-meta">
           <#if content.date??>
-            <time datetime="${content.date?string('yyyy-MM-dd')}">${content.date?string('yyyy.MM.dd')}</time>
+            <time datetime="${content.date?string('yyyy-MM-dd')}">分享 ${content.date?string('yyyy.MM.dd')}</time>
           </#if>
 
           <#if content.category??>
@@ -43,6 +43,9 @@
           <span>原始新聞</span>
           <#if content.source_name??>
             <span>${content.source_name?html}</span>
+          </#if>
+          <#if content.source_date?? && content.source_date?has_content>
+            <span>發布 ${content.source_date?html}</span>
           </#if>
         </div>
 

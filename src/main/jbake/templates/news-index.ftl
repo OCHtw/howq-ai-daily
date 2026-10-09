@@ -83,7 +83,7 @@
         >
           <div class="news-list-meta">
             <#if news.date??>
-              <time datetime="${news.date?string('yyyy-MM-dd')}">${news.date?string('yyyy.MM.dd')}</time>
+              <time datetime="${news.date?string('yyyy-MM-dd')}">分享 ${news.date?string('yyyy.MM.dd')}</time>
             </#if>
 
             <#if news.category??>
@@ -92,6 +92,9 @@
 
             <#if news.source_name??>
               <span>${news.source_name?html}</span>
+            </#if>
+            <#if news.source_date?? && news.source_date?has_content>
+              <span>原文 ${news.source_date?html}</span>
             </#if>
           </div>
 
