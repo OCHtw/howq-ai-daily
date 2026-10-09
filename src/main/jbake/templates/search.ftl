@@ -1,19 +1,29 @@
+<#assign searchable = []>
+
+<#list published_content as item>
+  <#if (item.type!"") == "post" || (item.type!"") == "news">
+    <#assign searchable = searchable + [item]>
+  </#if>
+</#list>
+
 [
-<#list published_posts as post>
+<#list searchable as item>
 {
-    "title": "${(post.title!"")?json_string}",
-    "uri": "${(post.uri!"")?json_string}",
-    "date": "<#if post.date??>${post.date?string("yyyy-MM-dd")}</#if>",
+    "title": "${(item.title!"")?json_string}",
+    "uri": "${(item.uri!"")?json_string}",
+    "date": "<#if item.date??>${item.date?string("yyyy-MM-dd")}</#if>",
+    "type": "${(item.type!"")?json_string}",
+    "category": "${(item.category!"")?json_string}",
 
     "tags": [
-        <#if post.tags??>
-            <#list post.tags as tag>
+        <#if item.tags??>
+            <#list item.tags as tag>
                 "${tag?json_string}"<#sep>,</#sep>
             </#list>
         </#if>
     ],
 
-    "body": "${(post.body!"")?json_string}"
+    "body": "${(((item.summary!"") + " " + (item.body!"")))?json_string}"
 }<#sep>,</#sep>
 </#list>
 ]

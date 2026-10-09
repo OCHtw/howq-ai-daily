@@ -1,9 +1,8 @@
 <#--
     共用 Tag UI
-    - renderPostTags：文章下面的 hashtag
-    - renderTagCloud：標籤雲
+    - renderPostTags：內容下方 hashtag
+    - renderTagCloud：標籤雲，可切 all / logs / news
 -->
-
 
 <#macro renderPostTags tagNames rootPath="">
     <#if tagNames?? && tagNames?size gt 0>
@@ -24,7 +23,6 @@
 
                     </#list>
                 </#if>
-
 
                 <#if tagUri?has_content>
 
@@ -49,58 +47,88 @@
 </#macro>
 
 
-
-<#macro renderTagCloud rootPath="">
+<#macro renderTagCloud
+    rootPath=""
+    scope="all"
+    title="Topics"
+    description=""
+    showAllLink=false
+>
 
     <#if tags?? && tags?size gt 0>
 
-        <section class="tag-cloud-section">
+        <section class="tag-cloud-section tag-cloud-section-${scope?html}">
 
-            <div class="section-heading">
-                <h2>Topics</h2>
+            <div class="section-heading tag-cloud-heading">
+                <div>
+                    <h2>${title?html}</h2>
 
-                <a
-                    class="section-more"
-                    href="${rootPath}tags/"
-                >
-                    全部標籤
-                </a>
+                    <#if description?has_content>
+                        <p class="tag-cloud-description">${description?html}</p>
+                    </#if>
+                </div>
+
+                <#if showAllLink>
+                    <a
+                        class="section-more"
+                        href="${rootPath}tags/"
+                    >
+                        全部標籤
+                    </a>
+                </#if>
             </div>
-
 
             <div class="tag-cloud">
 
                 <#list tags?sort_by("name") as t>
 
-                    <#local count = (t.tagged_posts![])?size>
-                    <#local sizeClass = "tag-cloud-s">
+                    <#local count = 0>
 
-                    <#if count gt 20>
+                    <#list (t.tagged_documents![]) as doc>
+                        <#local docType = (doc.type!"")>
 
-                        <#local sizeClass = "tag-cloud-xl">
+                        <#if
+                            (scope == "all" && (docType == "post" || docType == "news"))
+                            || (scope == "logs" && docType == "post")
+                            || (scope == "news" && docType == "news")
+                        >
+                            <#local count = count + 1>
+                        </#if>
+                    </#list>
 
-                    <#elseif count gt 10>
+                    <#if count gt 0>
 
-                        <#local sizeClass = "tag-cloud-l">
+                        <#local sizeClass = "tag-cloud-s">
 
-                    <#elseif count gt 4>
+                        <#if count gt 20>
+                            <#local sizeClass = "tag-cloud-xl">
+                        <#elseif count gt 10>
+                            <#local sizeClass = "tag-cloud-l">
+                        <#elseif count gt 4>
+                            <#local sizeClass = "tag-cloud-m">
+                        </#if>
 
-                        <#local sizeClass = "tag-cloud-m">
+                        <#local tagHref = rootPath + t.uri>
+
+                        <#if scope == "logs">
+                            <#local tagHref = tagHref + "?scope=logs">
+                        <#elseif scope == "news">
+                            <#local tagHref = tagHref + "?scope=news">
+                        </#if>
+
+                        <a
+                            class="tag-cloud-item ${sizeClass}"
+                            href="${tagHref?html}"
+                            title="${count} 篇內容"
+                        >
+                            #${t.name?html}
+
+                            <span class="tag-cloud-count">
+                                ${count}
+                            </span>
+                        </a>
 
                     </#if>
-
-
-                    <a
-                        class="tag-cloud-item ${sizeClass}"
-                        href="${rootPath}${t.uri?html}"
-                        title="${count} 篇文章"
-                    >
-                        #${t.name?html}
-
-                        <span class="tag-cloud-count">
-                            ${count}
-                        </span>
-                    </a>
 
                 </#list>
 

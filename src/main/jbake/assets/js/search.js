@@ -2,24 +2,19 @@
 
     "use strict";
 
-
     const search = document.querySelector(".site-search");
 
     if (!search) {
         return;
     }
 
-
     const input = search.querySelector(".site-search-input");
     const results = search.querySelector(".site-search-results");
 
     const rootPath = search.dataset.searchRoot || "";
 
-
     let index = null;
     let loadingPromise = null;
-
-
 
     function normalize(value) {
 
@@ -29,8 +24,6 @@
             .trim();
 
     }
-
-
 
     function stripHtml(html) {
 
@@ -48,19 +41,15 @@
 
     }
 
-
-
     async function loadIndex() {
 
         if (index) {
             return index;
         }
 
-
         if (loadingPromise) {
             return loadingPromise;
         }
-
 
         loadingPromise = fetch(rootPath + "search.json")
             .then(response => {
@@ -86,7 +75,6 @@
                             ? item.tags
                             : [];
 
-
                     return {
                         ...item,
 
@@ -105,6 +93,7 @@
                             normalize(
                                 [
                                     item.title,
+                                    item.category,
                                     tags.join(" "),
                                     bodyText
                                 ].join(" ")
@@ -112,7 +101,6 @@
                     };
 
                 });
-
 
                 return index;
 
@@ -130,12 +118,9 @@
 
             });
 
-
         return loadingPromise;
 
     }
-
-
 
     function score(item, tokens, wholeQuery) {
 
@@ -144,14 +129,11 @@
                 item.searchAll.includes(token)
             );
 
-
         if (!matchesAll) {
             return -1;
         }
 
-
         let result = 0;
-
 
         if (
             wholeQuery &&
@@ -159,7 +141,6 @@
         ) {
             result += 100;
         }
-
 
         for (const token of tokens) {
 
@@ -171,7 +152,6 @@
                 result += 80;
             }
 
-
             if (
                 item.searchTags.some(
                     tag => tag.includes(token)
@@ -180,13 +160,17 @@
                 result += 40;
             }
 
-
             if (
                 item.searchTitle.includes(token)
             ) {
                 result += 30;
             }
 
+            if (
+                normalize(item.category).includes(token)
+            ) {
+                result += 20;
+            }
 
             if (
                 item.searchBody.includes(token)
@@ -196,12 +180,9 @@
 
         }
 
-
         return result;
 
     }
-
-
 
     function createResult(item) {
 
@@ -214,8 +195,6 @@
         link.href =
             rootPath + item.uri;
 
-
-
         const title =
             document.createElement("div");
 
@@ -225,22 +204,27 @@
         title.textContent =
             item.title;
 
-
-
         const meta =
             document.createElement("div");
 
         meta.className =
             "search-result-meta";
 
-
         const parts = [];
 
+        if (item.type === "news") {
+            parts.push("新聞");
+        } else if (item.type === "post") {
+            parts.push("日誌");
+        }
 
         if (item.date) {
             parts.push(item.date);
         }
 
+        if (item.category) {
+            parts.push(item.category);
+        }
 
         if (
             item.tags &&
@@ -253,11 +237,8 @@
             );
         }
 
-
         meta.textContent =
             parts.join(" · ");
-
-
 
         const excerpt =
             document.createElement("div");
@@ -265,9 +246,7 @@
         excerpt.className =
             "search-result-excerpt";
 
-
         let text = item.bodyText || "";
-
 
         if (text.length > 140) {
 
@@ -277,27 +256,20 @@
 
         }
 
-
         excerpt.textContent =
             text;
-
-
 
         link.appendChild(title);
         link.appendChild(meta);
         link.appendChild(excerpt);
 
-
         return link;
 
     }
 
-
-
     function render(items) {
 
         results.replaceChildren();
-
 
         if (items.length === 0) {
 
@@ -308,7 +280,7 @@
                 "search-empty";
 
             empty.textContent =
-                "找不到符合的文章";
+                "找不到符合的內容";
 
             results.appendChild(empty);
 
@@ -316,7 +288,6 @@
 
             return;
         }
-
 
         items
             .slice(0, 8)
@@ -328,22 +299,17 @@
 
             });
 
-
         results.hidden = false;
 
     }
-
-
 
     async function searchArticles() {
 
         let query =
             normalize(input.value);
 
-
         query =
             query.replace(/^#+/, "");
-
 
         if (!query) {
 
@@ -355,16 +321,13 @@
 
         }
 
-
         const articles =
             await loadIndex();
-
 
         const tokens =
             query
                 .split(/\s+/)
                 .filter(Boolean);
-
 
         const matches =
             articles
@@ -389,15 +352,11 @@
                         result.item
                 );
 
-
         render(matches);
 
     }
 
-
-
     let timer = null;
-
 
     input.addEventListener(
         "input",
@@ -414,8 +373,6 @@
         }
     );
 
-
-
     input.addEventListener(
         "focus",
         () => {
@@ -430,8 +387,6 @@
 
         }
     );
-
-
 
     document.addEventListener(
         "keydown",
@@ -449,8 +404,6 @@
 
         }
     );
-
-
 
     document.addEventListener(
         "click",

@@ -9,19 +9,17 @@
             class="sr-only"
             for="site-search-input"
         >
-            搜尋文章
+            搜尋日誌與新聞
         </label>
-
 
         <input
             id="site-search-input"
             class="site-search-input"
             type="search"
-            placeholder="搜尋文章…"
+            placeholder="搜尋日誌與新聞…"
             autocomplete="off"
             spellcheck="false"
         >
-
 
         <div
             id="site-search-results"
@@ -31,7 +29,6 @@
         ></div>
 
     </div>
-
 
     <script
         defer
