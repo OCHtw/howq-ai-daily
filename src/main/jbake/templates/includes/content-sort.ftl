@@ -1,7 +1,7 @@
 <#--
   共用文章排序：
   1. date 日期新到舊（同一天只比較 yyyy-MM-dd）
-  2. 來源檔名小到大（不是文章標題、也不是發布先後）
+  2. 來源檔名大到小（不是文章標題、也不是發布先後）
 
   JBake 在 document.file 提供來源檔案完整路徑；
   把路徑分隔符統一後，只取最後的檔名。
@@ -33,8 +33,8 @@
     </#if>
   </#list>
 
-  <#-- 日期降冪，日期相同時先按檔名升冪。 -->
-  <#local byFilename = rows?sort_by("filename")>
+  <#-- 日期降冪，日期相同時先按檔名降冪。 -->
+  <#local byFilename = rows?sort_by("filename")?reverse>
   <#local result = []>
   <#list days?sort?reverse as day>
     <#list byFilename as row>
