@@ -1,17 +1,28 @@
-/* Optional cover thumbnails for Markdown journal posts.
- * Images are shown only when the post has a nonblank `cover` property.
+/* Optional article cover.
+ * Markdown uses only: cover=/images/example.png
+ * No `cover`: full-width text, no placeholder.
+ * Desktop: square cover, 40% width, aligned with the heading top.
+ * Mobile: 112px square beside heading, summary and links below.
  */
-.post-card-layout,
+
+.post-card-layout {
+  margin-top: 20px;
+}
+
 .tag-result-layout {
-  display: flex;
-  align-items: flex-start;
-  gap: 18px;
+  margin-top: 10px;
 }
 
 .post-card-copy,
 .tag-result-copy {
   min-width: 0;
-  flex: 1 1 0%;
+}
+
+/* In site.css, headings already have a top margin.
+   Remove it because the layout starts at the heading's own top. */
+.post-card-layout .post-card-copy h3,
+.tag-result-layout .tag-result-copy h2 {
+  margin-top: 0;
 }
 
 .tag-result-copy > p {
@@ -19,19 +30,31 @@
   color: var(--text-secondary);
 }
 
+.post-card-layout.has-cover,
+.tag-result-layout.has-cover {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  gap: 18px;
+  align-items: start;
+}
+
+/* Square crop without the inset/card-like frame. */
 .post-list-cover {
   display: block;
-  flex: 0 0 auto;
+  min-width: 0;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
-  border: 1px solid var(--border-default);
+  border: 0;
   border-radius: 12px;
-  background: var(--color-surface-soft);
+  background: transparent;
 }
 
 .post-list-cover img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: 100%;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   transition: transform .18s ease;
 }
@@ -45,22 +68,59 @@
   outline-offset: 4px;
 }
 
-.post-card-cover {
-  width: 124px;
-}
-
+/* The tag results are one column, so keep their images from becoming enormous. */
 .tag-result-cover {
-  width: 160px;
+  max-width: 280px;
+  justify-self: end;
 }
 
-@media (max-width: 480px) {
-  .post-card-layout,
-  .tag-result-layout {
-    gap: 12px;
+@media (max-width: 760px) {
+  .post-card-layout.has-cover,
+  .tag-result-layout.has-cover {
+    grid-template-columns: minmax(0, 1fr) 112px;
+    column-gap: 12px;
+    row-gap: 14px;
   }
 
-  .post-card-cover,
-  .tag-result-cover {
-    width: 96px;
+  /* Put title beside the cover, but let the description use both columns. */
+  .post-card-layout.has-cover .post-card-copy,
+  .tag-result-layout.has-cover .tag-result-copy {
+    display: contents;
+  }
+
+  .post-card-layout.has-cover .post-card-copy > h3,
+  .tag-result-layout.has-cover .tag-result-copy > h2 {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+    margin-bottom: 0;
+  }
+
+  .post-card-layout.has-cover .post-card-cover,
+  .tag-result-layout.has-cover .tag-result-cover {
+    grid-column: 2;
+    grid-row: 1;
+    width: 112px;
+    max-width: none;
+    justify-self: end;
+  }
+
+  .post-card-layout.has-cover .post-card-copy > p,
+  .tag-result-layout.has-cover .tag-result-copy > p {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin: 0;
+  }
+
+  .post-card-layout.has-cover .post-card-copy > .text-link {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    margin-top: 0;
+  }
+
+  .tag-result-layout.has-cover .tag-result-copy > .post-tags {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    margin-top: 0;
   }
 }

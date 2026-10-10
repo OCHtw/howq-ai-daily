@@ -38,28 +38,29 @@
 
       <div class="tag-result-list" id="tag-result-list">
         <#list displayDocuments as doc>
+          <#assign hasCover = (doc.type!"") == "post" && (doc.cover!"")?trim?has_content>
           <article
             class="tag-result-item"
             data-content-type="${(doc.type!"")?html}"
           >
-            <div class="tag-result-layout">
+            <div class="post-meta">
+              <#if doc.date??>
+                <time datetime="${doc.date?string('yyyy-MM-dd')}">${doc.date?string('yyyy.MM.dd')}</time>
+              </#if>
+
+              <#if (doc.type!"") == "news">
+                <span>新聞</span>
+              <#else>
+                <span>日誌</span>
+              </#if>
+
+              <#if doc.category??>
+                <span>${doc.category?html}</span>
+              </#if>
+            </div>
+
+            <div class="tag-result-layout<#if hasCover> has-cover</#if>">
               <div class="tag-result-copy">
-                <div class="post-meta">
-                  <#if doc.date??>
-                    <time datetime="${doc.date?string('yyyy-MM-dd')}">${doc.date?string('yyyy.MM.dd')}</time>
-                  </#if>
-
-                  <#if (doc.type!"") == "news">
-                    <span>新聞</span>
-                  <#else>
-                    <span>日誌</span>
-                  </#if>
-
-                  <#if doc.category??>
-                    <span>${doc.category?html}</span>
-                  </#if>
-                </div>
-
                 <h2>
                   <a href="../${doc.uri?html}">${doc.title?html}</a>
                 </h2>
@@ -75,7 +76,7 @@
               </div>
 
               <#-- News list stays unchanged. Posts show a thumbnail only if cover is set. -->
-              <#if (doc.type!"") == "post" && (doc.cover!"")?trim?has_content>
+              <#if hasCover>
                 <a class="post-list-cover tag-result-cover"
                    href="../${doc.uri?html}"
                    aria-label="閱讀：${doc.title?html}">

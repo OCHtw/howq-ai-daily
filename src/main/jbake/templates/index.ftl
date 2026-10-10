@@ -45,19 +45,20 @@
       <div class="post-list">
         <#if published_posts?has_content>
           <#list published_posts as post>
+            <#assign hasCover = (post.cover!"")?trim?has_content>
             <article class="post-card">
-              <div class="post-card-layout">
+              <div class="post-meta">
+                <time datetime="${post.date?string('yyyy-MM-dd')}">${post.date?string('yyyy.MM.dd')}</time>
+                <#if post.category??><span>${post.category}</span></#if>
+              </div>
+              <div class="post-card-layout<#if hasCover> has-cover</#if>">
                 <div class="post-card-copy">
-                  <div class="post-meta">
-                    <time datetime="${post.date?string('yyyy-MM-dd')}">${post.date?string('yyyy.MM.dd')}</time>
-                    <#if post.category??><span>${post.category}</span></#if>
-                  </div>
                   <h3><a href="${post.uri?html}">${post.title?html}</a></h3>
                   <#if post.summary??><p>${post.summary?html}</p></#if>
                   <a class="text-link" href="${post.uri?html}">閱讀紀錄 →</a>
                 </div>
                 <#-- Only an explicitly specified cover is shown. Never scan the article body. -->
-                <#if (post.cover!"")?trim?has_content>
+                <#if hasCover>
                   <a class="post-list-cover post-card-cover"
                      href="${post.uri?html}"
                      aria-label="閱讀：${post.title?html}">
