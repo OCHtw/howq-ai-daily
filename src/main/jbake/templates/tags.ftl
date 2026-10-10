@@ -14,6 +14,7 @@
 
   <#include "includes/header.ftl">
   <#include "includes/tag-ui.ftl">
+  <#include "includes/content-sort.ftl">
 
   <#assign displayDocuments = []>
 
@@ -22,6 +23,8 @@
       <#assign displayDocuments = displayDocuments + [doc]>
     </#if>
   </#list>
+
+  <#assign displayDocuments = sortByDateAndFilename(displayDocuments)>
 
   <main class="shell article-shell">
     <section class="tag-page">

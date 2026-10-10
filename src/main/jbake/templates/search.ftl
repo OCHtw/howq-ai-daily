@@ -1,3 +1,4 @@
+<#include "includes/content-sort.ftl">
 <#assign searchable = []>
 
 <#list published_content as item>
@@ -5,6 +6,8 @@
     <#assign searchable = searchable + [item]>
   </#if>
 </#list>
+
+<#assign searchable = sortByDateAndFilename(searchable)>
 
 [
 <#list searchable as item>

@@ -13,6 +13,8 @@
   <#assign currentSection = "logs">
   <#include "includes/header.ftl">
   <#include "includes/tag-ui.ftl">
+  <#include "includes/content-sort.ftl">
+  <#assign sortedPosts = sortByDateAndFilename(published_posts)>
   <main>
     <section class="hero">
       <div class="shell hero-grid">
@@ -43,8 +45,8 @@
       </div>
 
       <div class="post-list">
-        <#if published_posts?has_content>
-          <#list published_posts as post>
+        <#if sortedPosts?has_content>
+          <#list sortedPosts as post>
             <#assign hasCover = (post.cover!"")?trim?has_content>
             <article class="post-card">
               <div class="post-meta">

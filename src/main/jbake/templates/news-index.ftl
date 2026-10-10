@@ -13,6 +13,7 @@
 
   <#include "includes/header.ftl">
   <#include "includes/tag-ui.ftl">
+  <#include "includes/content-sort.ftl">
 
   <#assign newsItems = []>
 
@@ -22,7 +23,7 @@
     </#if>
   </#list>
 
-  <#assign newsItems = newsItems?sort_by("date")?reverse>
+  <#assign newsItems = sortByDateAndFilename(newsItems)>
   <#assign newsCategories = []>
 
   <#list newsItems as item>
