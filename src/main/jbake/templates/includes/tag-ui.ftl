@@ -57,6 +57,41 @@
 
     <#if tags?? && tags?size gt 0>
 
+        <#-- 每個標籤先依目前 scope 計算文章筆數，排除筆數為 0 的標籤。 -->
+        <#local tagRows = []>
+        <#local countLevels = []>
+
+        <#list tags as t>
+            <#local count = 0>
+
+            <#list (t.tagged_documents![]) as doc>
+                <#local docType = (doc.type!"")>
+
+                <#if
+                    (scope == "all" && (docType == "post" || docType == "news"))
+                    || (scope == "logs" && docType == "post")
+                    || (scope == "news" && docType == "news")
+                >
+                    <#local count = count + 1>
+                </#if>
+            </#list>
+
+            <#if count gt 0>
+                <#local tagRows = tagRows + [{
+                    "tag": t,
+                    "name": t.name,
+                    "count": count
+                }]>
+
+                <#if !countLevels?seq_contains(count)>
+                    <#local countLevels = countLevels + [count]>
+                </#if>
+            </#if>
+        </#list>
+
+        <#-- 排序：筆數由大到小；同筆數時標籤文字由小到大。 -->
+        <#local rowsByName = tagRows?sort_by("name")>
+
         <section class="tag-cloud-section tag-cloud-section-${scope?html}">
 
             <div class="section-heading tag-cloud-heading">
@@ -80,56 +115,42 @@
 
             <div class="tag-cloud">
 
-                <#list tags?sort_by("name") as t>
+                <#list countLevels?sort?reverse as groupCount>
+                    <#list rowsByName as row>
+                        <#if row.count == groupCount>
+                            <#local t = row.tag>
+                            <#local count = row.count>
+                            <#local sizeClass = "tag-cloud-s">
 
-                    <#local count = 0>
+                            <#if count gt 20>
+                                <#local sizeClass = "tag-cloud-xl">
+                            <#elseif count gt 10>
+                                <#local sizeClass = "tag-cloud-l">
+                            <#elseif count gt 4>
+                                <#local sizeClass = "tag-cloud-m">
+                            </#if>
 
-                    <#list (t.tagged_documents![]) as doc>
-                        <#local docType = (doc.type!"")>
+                            <#local tagHref = rootPath + t.uri>
 
-                        <#if
-                            (scope == "all" && (docType == "post" || docType == "news"))
-                            || (scope == "logs" && docType == "post")
-                            || (scope == "news" && docType == "news")
-                        >
-                            <#local count = count + 1>
+                            <#if scope == "logs">
+                                <#local tagHref = tagHref + "?scope=logs">
+                            <#elseif scope == "news">
+                                <#local tagHref = tagHref + "?scope=news">
+                            </#if>
+
+                            <a
+                                class="tag-cloud-item ${sizeClass}"
+                                href="${tagHref?html}"
+                                title="${count} 篇內容"
+                            >
+                                #${t.name?html}
+
+                                <span class="tag-cloud-count">
+                                    ${count}
+                                </span>
+                            </a>
                         </#if>
                     </#list>
-
-                    <#if count gt 0>
-
-                        <#local sizeClass = "tag-cloud-s">
-
-                        <#if count gt 20>
-                            <#local sizeClass = "tag-cloud-xl">
-                        <#elseif count gt 10>
-                            <#local sizeClass = "tag-cloud-l">
-                        <#elseif count gt 4>
-                            <#local sizeClass = "tag-cloud-m">
-                        </#if>
-
-                        <#local tagHref = rootPath + t.uri>
-
-                        <#if scope == "logs">
-                            <#local tagHref = tagHref + "?scope=logs">
-                        <#elseif scope == "news">
-                            <#local tagHref = tagHref + "?scope=news">
-                        </#if>
-
-                        <a
-                            class="tag-cloud-item ${sizeClass}"
-                            href="${tagHref?html}"
-                            title="${count} 篇內容"
-                        >
-                            #${t.name?html}
-
-                            <span class="tag-cloud-count">
-                                ${count}
-                            </span>
-                        </a>
-
-                    </#if>
-
                 </#list>
 
             </div>
