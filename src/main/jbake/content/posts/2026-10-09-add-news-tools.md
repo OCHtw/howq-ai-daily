@@ -2,8 +2,9 @@ title=手作快剪新聞貼文
 date=2026-10-09
 type=post
 status=published
-category=軟體工具
-tags=網頁產生器
+category=內建小程式
+cover=/images/2026-10-08/2026-10-10-news-page-snapshot-cover.jpg
+tags=網頁產生器,Blog改版
 summary=方便收藏又可以很快就發表的新聞工具
 ~~~~~~
 
