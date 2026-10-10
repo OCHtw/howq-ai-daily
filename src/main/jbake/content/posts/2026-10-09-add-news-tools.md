@@ -28,3 +28,13 @@ category=AI
 source_name=來源媒體
 source_url=https://example.com/news
 ~~~~~~
+
+
+## 新聞加入聯播
+
+快照於2026-10-10
+
+![網站新聞頁 2026-10-10 快照](/images/2026-10-08/2026-10-10-news-page-snapshot.jpg)
+
+
+
