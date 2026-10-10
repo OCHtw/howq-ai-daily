@@ -1,0 +1,17 @@
+/* News summary follows the same typography and green quote rule as
+   blockquotes written inside the Markdown editorial note. */
+.news-review-header .news-summary {
+  margin-top: 32px;
+}
+
+.news-review-header .news-summary .eyebrow {
+  margin: 0 0 12px;
+}
+
+.news-review-header .news-summary-body {
+  padding-top: 0;
+}
+
+.news-review-header .news-summary-body blockquote {
+  margin: 0;
+}

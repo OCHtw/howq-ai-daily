@@ -35,6 +35,13 @@
       </header>
 
       <div class="article-body news-review-body">
+        <#-- Display summary directly above the editor's own review, using the same blockquote style as Markdown. -->
+        <#if content.summary?? && content.summary?has_content>
+          <blockquote>
+            <p>${content.summary?html}</p>
+          </blockquote>
+        </#if>
+
         ${content.body}
       </div>
 
