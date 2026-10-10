@@ -134,6 +134,14 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--focus-ring); ou
 .article-body table { width: 100%; border-collapse: collapse; margin: 1.6em 0; font-size: .94rem; }
 .article-body th, .article-body td { padding: 10px 12px; border-bottom: 1px solid var(--border-default); text-align: left; vertical-align: top; }
 .article-body th { background: color-mix(in srgb, var(--brand-friendly) 45%, white); }
+/* Markdown 文章圖片 */
+.article-body img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 24px auto;
+    border-radius: 12px;
+}
 
 .site-footer { border-top: 1px solid var(--border-default); background: var(--color-charcoal-900); color: var(--text-inverse); }
 .footer-inner { min-height: 130px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
