@@ -1,0 +1,66 @@
+/* Optional cover thumbnails for Markdown journal posts.
+ * Images are shown only when the post has a nonblank `cover` property.
+ */
+.post-card-layout,
+.tag-result-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.post-card-copy,
+.tag-result-copy {
+  min-width: 0;
+  flex: 1 1 0%;
+}
+
+.tag-result-copy > p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.post-list-cover {
+  display: block;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border: 1px solid var(--border-default);
+  border-radius: 12px;
+  background: var(--color-surface-soft);
+}
+
+.post-list-cover img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform .18s ease;
+}
+
+.post-list-cover:hover img {
+  transform: scale(1.03);
+}
+
+.post-list-cover:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 4px;
+}
+
+.post-card-cover {
+  width: 124px;
+}
+
+.tag-result-cover {
+  width: 160px;
+}
+
+@media (max-width: 480px) {
+  .post-card-layout,
+  .tag-result-layout {
+    gap: 12px;
+  }
+
+  .post-card-cover,
+  .tag-result-cover {
+    width: 96px;
+  }
+}

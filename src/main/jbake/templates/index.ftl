@@ -6,6 +6,7 @@
   <meta name="description" content="${config.site_description}">
   <title>${config.site_title} — ${config.site_subtitle}</title>
   <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/post-cover.css">
 </head>
 <body>
   <#assign rootPath = "">
@@ -45,13 +46,28 @@
         <#if published_posts?has_content>
           <#list published_posts as post>
             <article class="post-card">
-              <div class="post-meta">
-                <time datetime="${post.date?string('yyyy-MM-dd')}">${post.date?string('yyyy.MM.dd')}</time>
-                <#if post.category??><span>${post.category}</span></#if>
+              <div class="post-card-layout">
+                <div class="post-card-copy">
+                  <div class="post-meta">
+                    <time datetime="${post.date?string('yyyy-MM-dd')}">${post.date?string('yyyy.MM.dd')}</time>
+                    <#if post.category??><span>${post.category}</span></#if>
+                  </div>
+                  <h3><a href="${post.uri?html}">${post.title?html}</a></h3>
+                  <#if post.summary??><p>${post.summary?html}</p></#if>
+                  <a class="text-link" href="${post.uri?html}">閱讀紀錄 →</a>
+                </div>
+                <#-- Only an explicitly specified cover is shown. Never scan the article body. -->
+                <#if (post.cover!"")?trim?has_content>
+                  <a class="post-list-cover post-card-cover"
+                     href="${post.uri?html}"
+                     aria-label="閱讀：${post.title?html}">
+                    <img src="${post.cover?trim?html}"
+                         alt=""
+                         loading="lazy"
+                         decoding="async">
+                  </a>
+                </#if>
               </div>
-              <h3><a href="${post.uri}">${post.title}</a></h3>
-              <#if post.summary??><p>${post.summary}</p></#if>
-              <a class="text-link" href="${post.uri}">閱讀紀錄 →</a>
             </article>
           </#list>
         <#else>

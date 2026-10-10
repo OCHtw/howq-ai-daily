@@ -6,6 +6,7 @@
   <meta name="description" content="${config.site_description}">
   <title>#${tag?html} — ${config.site_title}</title>
   <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="../css/post-cover.css">
 </head>
 <body>
   <#assign rootPath = "../">
@@ -41,34 +42,50 @@
             class="tag-result-item"
             data-content-type="${(doc.type!"")?html}"
           >
-            <div class="post-meta">
-              <#if doc.date??>
-                <time datetime="${doc.date?string('yyyy-MM-dd')}">${doc.date?string('yyyy.MM.dd')}</time>
-              </#if>
+            <div class="tag-result-layout">
+              <div class="tag-result-copy">
+                <div class="post-meta">
+                  <#if doc.date??>
+                    <time datetime="${doc.date?string('yyyy-MM-dd')}">${doc.date?string('yyyy.MM.dd')}</time>
+                  </#if>
 
-              <#if (doc.type!"") == "news">
-                <span>新聞</span>
-              <#else>
-                <span>日誌</span>
-              </#if>
+                  <#if (doc.type!"") == "news">
+                    <span>新聞</span>
+                  <#else>
+                    <span>日誌</span>
+                  </#if>
 
-              <#if doc.category??>
-                <span>${doc.category?html}</span>
+                  <#if doc.category??>
+                    <span>${doc.category?html}</span>
+                  </#if>
+                </div>
+
+                <h2>
+                  <a href="../${doc.uri?html}">${doc.title?html}</a>
+                </h2>
+
+                <#if doc.summary??>
+                  <p>${doc.summary?html}</p>
+                </#if>
+
+                <@renderPostTags
+                  tagNames=(doc.tags![])
+                  rootPath="../"
+                />
+              </div>
+
+              <#-- News list stays unchanged. Posts show a thumbnail only if cover is set. -->
+              <#if (doc.type!"") == "post" && (doc.cover!"")?trim?has_content>
+                <a class="post-list-cover tag-result-cover"
+                   href="../${doc.uri?html}"
+                   aria-label="閱讀：${doc.title?html}">
+                  <img src="${doc.cover?trim?html}"
+                       alt=""
+                       loading="lazy"
+                       decoding="async">
+                </a>
               </#if>
             </div>
-
-            <h2>
-              <a href="../${doc.uri?html}">${doc.title?html}</a>
-            </h2>
-
-            <#if doc.summary??>
-              <p>${doc.summary?html}</p>
-            </#if>
-
-            <@renderPostTags
-              tagNames=(doc.tags![])
-              rootPath="../"
-            />
           </article>
         <#else>
           <div class="empty-state">目前沒有內容。</div>
