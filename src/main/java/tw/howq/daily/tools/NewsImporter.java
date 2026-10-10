@@ -6,6 +6,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -20,6 +21,7 @@ import org.jsoup.nodes.Element;
 /** Imports public article metadata as a JBake news draft; it does not copy article bodies. */
 public final class NewsImporter {
     private static final ZoneId TAIPEI = ZoneId.of("Asia/Taipei");
+    private static final DateTimeFormatter FILE_DATE_HOUR = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH");
     private static final Pattern DATE = Pattern.compile("(\\d{4}-\\d{2}-\\d{2})");
     private static final Pattern SLUG = Pattern.compile("[^a-z0-9]+", Pattern.CASE_INSENSITIVE);
     private static final int TIMEOUT_MILLIS = 15_000;
@@ -73,7 +75,8 @@ public final class NewsImporter {
                 meta(doc, "meta[name=date]"),
                 meta(doc, "meta[itemprop=datePublished]"),
                 timeValue(doc));
-        LocalDate date = LocalDate.now(TAIPEI);
+        ZonedDateTime importedAt = ZonedDateTime.now(TAIPEI);
+        LocalDate date = importedAt.toLocalDate();
         LocalDate sourceDate = parseDate(published);
         String host = source.getHost();
         String sourceName = firstNotBlank(meta(doc, "meta[property=og:site_name]"), host);
@@ -82,7 +85,7 @@ public final class NewsImporter {
         String category = args.length >= 2 && !args[1].isBlank() ? args[1].trim() : "未分類";
         Path outDir = Path.of("src", "main", "jbake", "content", "news");
         Files.createDirectories(outDir);
-        String basename = date + "-" + slug(source);
+        String basename = importedAt.format(FILE_DATE_HOUR) + "-" + slug(source);
         Path target = outDir.resolve(basename + ".md");
         int number = 2;
         while (Files.exists(target)) {
