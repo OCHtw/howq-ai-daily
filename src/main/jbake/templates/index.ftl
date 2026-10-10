@@ -76,7 +76,11 @@
       </div>
     </section>
     <div class="shell">
-      <@renderTagCloud rootPath="" />
+      <@renderTagCloud
+        rootPath=""
+        scope="logs"
+        title="日誌標籤"
+      />
     </div>
    <br/>
    <br/>
