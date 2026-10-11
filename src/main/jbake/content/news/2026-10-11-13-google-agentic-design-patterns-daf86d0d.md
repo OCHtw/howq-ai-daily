@@ -1,4 +1,4 @@
-title=Google 工程師這份 424 頁文件，成為 AI Agent 開發者的必讀聖經 - INSIDE
+title=Google 工程師這份 424 頁文件，成為 AI Agent 開發者的必讀聖經
 date=2026-10-11
 source_date=2026-06-27
 type=news
