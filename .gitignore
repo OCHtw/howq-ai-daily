@@ -20,3 +20,6 @@ target/
 *.bak
 /README-NEWS-DATE-FIX.md
 /README-NEWS-IMPORTER.md
+
+src/main/jbake/content/news/draft/*.md
+src/main/jbake/content/posts/draft/*.md
