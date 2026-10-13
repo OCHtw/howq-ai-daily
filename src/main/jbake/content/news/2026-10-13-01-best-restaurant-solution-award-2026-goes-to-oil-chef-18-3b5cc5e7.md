@@ -4,7 +4,7 @@ source_date=
 type=news
 status=published
 category=產業消息
-tags=ESG,Insight
+tags=ESG,Insight,SDGs
 source_name=Issuewire
 source_url=https://www.issuewire.com/best-restaurant-solution-award-2026-goes-to-oil-chef-1877798566023179
 image=https://s3-us-west-2.amazonaws.com/issuewireassets/primg/222174/mid_industry-judges.JPG
@@ -26,6 +26,16 @@ preview=OiL Chef has won the prestigious best award for the QSR, Food Service, H
 感覺很神奇！！
 
 > 不過給小編的啟發是，若完全不改變原本的現狀，簡單的加入就能發揮作用，原有投資可以沿用，那購買的價值就可很簡單被算出來多久回本，引入障礙就會很低。例如小編目前要做「GEO農場」，如何可以直接輔助店家現有的資訊系統與店家頁，但又不用改內容，而成效又看的到且購入成本又低，應該會讓店家更願意試用看看。
+
+
+## ESG & SDGs ： 透過實踐特定 SDGs（如減碳、減少浪費），來提升自己的 ESG 表現。
+
+  * 幫助了 ESG（企業視角、看營運體質） - 環境（E）：少耗損燃料意味著直接降低溫室氣體排放（碳盤查中的範疇一或範疇二）；少耗損食用油則大幅降低了廢油處理壓力與資源消耗。
+    * 「這技術能有效提升客戶的 ESG 績效（特別是 E 的指標），並實質降低營運成本。」
+
+  * 幫助了 SDGs（全球視角、看社會貢獻）：SDG 12（責任消費與生產）：將食用油耗損減半，極大化資源使用效率並減少廢棄物 ｜ SDG 7（可負擔的潔淨能源）：降低燃料消耗，提升能源效率 ｜ SDG 13（氣候行動）：減少燃料燃燒所帶來的碳排放。
+    * 「這創新設備響應了聯合國 SDGs 責任消費與氣候行動，致力於推動綠色餐飲。」
+
 
 
 
