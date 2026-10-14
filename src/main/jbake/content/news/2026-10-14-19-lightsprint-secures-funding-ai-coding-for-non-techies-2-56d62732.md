@@ -1,4 +1,4 @@
-title=This Y Combinator startup raised $6.1 million to let non-techies ship code
+title=這家 Y Combinator支持的新創公司籌集了610萬美元，旨在讓非技術人員也能編寫程式碼
 date=2026-10-14
 source_date=2026-10-13
 type=news
