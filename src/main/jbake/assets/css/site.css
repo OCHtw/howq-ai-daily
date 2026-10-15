@@ -143,6 +143,23 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--focus-ring); ou
     border-radius: 12px;
 }
 
+/* Markdown 文章內嵌 YouTube：保持 16:9，手機自動縮放 */
+.article-body .video-container {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin: 24px 0;
+    overflow: hidden;
+    border-radius: 12px;
+    background: var(--color-charcoal-900);
+}
+
+.article-body .video-container iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
 .site-footer { border-top: 1px solid var(--border-default); background: var(--color-charcoal-900); color: var(--text-inverse); }
 .footer-inner { min-height: 130px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .footer-inner p { margin: 0; color: #d8d8d3; font-size: .82rem; }
