@@ -7,6 +7,13 @@
   <title>${config.site_title} — ${config.site_subtitle}</title>
   <link rel="stylesheet" href="css/site.css">
   <link rel="stylesheet" href="css/post-cover.css">
+  <#include "includes/seo-head.ftl">
+  <@renderSeo
+    pageUri=""
+    pageTitle=(config.site_title + " — " + config.site_subtitle)
+    pageDescription=config.site_description
+    pageKind="index"
+  />
 </head>
 <body>
   <#assign rootPath = "">

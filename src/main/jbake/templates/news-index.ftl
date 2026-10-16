@@ -6,6 +6,14 @@
   <meta name="description" content="howq AI Daily 新聞短評與資訊整理。">
   <title>新聞 — ${config.site_title}</title>
   <link rel="stylesheet" href="${content.rootpath}css/site.css">
+  <#include "includes/seo-head.ftl">
+  <@renderSeo
+    pageUri=(content.uri!"news/index.html")
+    pageTitle=("新聞 — " + config.site_title)
+    pageDescription="howq AI Daily 新聞短評與資訊整理。"
+    pageKind=(content.type!"newsindex")
+    doc=content
+  />
 </head>
 <body>
   <#assign rootPath = content.rootpath>

@@ -6,6 +6,13 @@
   <meta name="description" content="依主題瀏覽 ${config.site_title} 的日誌與新聞。">
   <title>主題 — ${config.site_title}</title>
   <link rel="stylesheet" href="../css/site.css">
+  <#include "includes/seo-head.ftl">
+  <@renderSeo
+    pageUri="tags/"
+    pageTitle=("主題 — " + config.site_title)
+    pageDescription=("依主題瀏覽 " + config.site_title + " 的日誌與新聞。")
+    pageKind="tagsindex"
+  />
 </head>
 <body>
   <#assign rootPath = "../">

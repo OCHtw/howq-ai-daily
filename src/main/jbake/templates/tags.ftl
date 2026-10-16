@@ -7,6 +7,23 @@
   <title>#${tag?html} — ${config.site_title}</title>
   <link rel="stylesheet" href="../css/site.css">
   <link rel="stylesheet" href="../css/post-cover.css">
+  <#-- Use JBake's actual generated tag URL, not a guessed filename. -->
+  <#assign seoTagUri = "">
+  <#list (tags![]) as seoTag>
+    <#if seoTag.name == tag>
+      <#assign seoTagUri = seoTag.uri>
+      <#break>
+    </#if>
+  </#list>
+  <#if seoTagUri?has_content>
+    <#include "includes/seo-head.ftl">
+    <@renderSeo
+      pageUri=seoTagUri
+      pageTitle=("#" + tag + " — " + config.site_title)
+      pageDescription=("與 #" + tag + " 相關的日誌與新聞。")
+      pageKind="tag"
+    />
+  </#if>
 </head>
 <body>
   <#assign rootPath = "../">

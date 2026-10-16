@@ -6,6 +6,14 @@
   <meta name="description" content="${(content.summary)!config.site_description}">
   <title>${content.title} — ${config.site_title}</title>
   <link rel="stylesheet" href="${content.rootpath}css/site.css">
+  <#include "includes/seo-head.ftl">
+  <@renderSeo
+    pageUri=(content.uri!"")
+    pageTitle=(content.title!config.site_title)
+    pageDescription=(content.summary!config.site_description)
+    pageKind=(content.type!"page")
+    doc=content
+  />
 </head>
 <body>
   <#assign rootPath = content.rootpath>
