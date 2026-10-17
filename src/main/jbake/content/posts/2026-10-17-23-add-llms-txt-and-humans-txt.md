@@ -51,3 +51,10 @@ Hosting: GitHub Pages
 ~~~~~~
 
 
+><a href="https://dev.howqpon.com/llms.txt"
+   target="_blank"
+   rel="noopener noreferrer">
+   看完整llms.txt ↗
+</a>
+
+

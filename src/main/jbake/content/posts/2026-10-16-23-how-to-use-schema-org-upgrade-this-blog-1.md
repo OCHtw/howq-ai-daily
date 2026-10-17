@@ -26,6 +26,13 @@ summary=先把 SEO 基礎與 Schema.org 一起做好。統一正式網域、cano
 | `robots.txt` | 新增 Sitemap 宣告 |
 
 
+><a href="https://dev.howqpon.com/robots.txt"
+   target="_blank"
+   rel="noopener noreferrer">
+   看完整robots.txt ↗
+</a>
+
+
 ## 增加的修改 10/17
 
   - 未來新增的貼文都預設發文日為 dateModified
