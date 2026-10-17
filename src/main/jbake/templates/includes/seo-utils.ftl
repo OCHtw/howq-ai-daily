@@ -30,3 +30,19 @@
 <#function jsonEscape value="">
   <#return (value!"")?string?json_string?replace("<", r"\u003C")>
 </#function>
+
+<#-- For older Markdown without dateModified, use the original publication date.
+     This does not modify any Markdown source file. -->
+<#function effectiveModifiedDate doc>
+  <#if doc.dateModified??>
+    <#if doc.dateModified?is_date>
+      <#return doc.dateModified?string("yyyy-MM-dd")>
+    <#elseif doc.dateModified?string?trim?has_content>
+      <#return doc.dateModified?string?trim>
+    </#if>
+  </#if>
+  <#if doc.date??>
+    <#return doc.date?string("yyyy-MM-dd")>
+  </#if>
+  <#return "">
+</#function>

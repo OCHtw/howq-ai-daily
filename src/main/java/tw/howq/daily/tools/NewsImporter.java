@@ -95,6 +95,7 @@ public final class NewsImporter {
         StringBuilder markdown = new StringBuilder();
         header(markdown, "title", title);
         header(markdown, "date", date.toString());
+        header(markdown, "dateModified", date.toString());
         header(markdown, "source_date", sourceDate == null ? "" : sourceDate.toString());
         header(markdown, "type", "news");
         header(markdown, "status", "draft");

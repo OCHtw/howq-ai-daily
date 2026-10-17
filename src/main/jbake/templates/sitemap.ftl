@@ -9,8 +9,8 @@
     <#if doc.uri?? && ((doc.type!"") == "post" || (doc.type!"") == "news" || (doc.type!"") == "page")>
   <url>
     <loc>${canonicalUrl(doc.uri)?xml}</loc>
-    <#if doc.dateModified?? && doc.dateModified?string?trim?has_content>
-    <lastmod>${doc.dateModified?string?trim?xml}</lastmod>
+    <#if effectiveModifiedDate(doc)?has_content>
+    <lastmod>${effectiveModifiedDate(doc)?xml}</lastmod>
     </#if>
   </url>
     </#if>
