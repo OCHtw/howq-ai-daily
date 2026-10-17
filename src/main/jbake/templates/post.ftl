@@ -26,7 +26,14 @@
       <header class="article-header">
         <a class="back-link" href="${content.rootpath}index.html">← 回到日誌</a>
         <div class="post-meta">
-          <time datetime="${content.date?string('yyyy-MM-dd')}">${content.date?string('yyyy.MM.dd')}</time>
+          <time datetime="${content.date?string('yyyy-MM-dd')}">發布 ${content.date?string('yyyy.MM.dd')}</time>
+          <#-- Modified date is displayed only when it differs from the publication date.
+               The shared SEO helper also falls back to publication date for older posts. -->
+          <#assign modifiedDate = effectiveModifiedDate(content)>
+          <#if modifiedDate?has_content && modifiedDate != content.date?string('yyyy-MM-dd')>
+            <span>·</span>
+            <time datetime="${modifiedDate?html}">更新 ${modifiedDate?replace('-', '.')?html}</time>
+          </#if>
           <#if content.category??><span>${content.category}</span></#if>
         </div>
         <h1>${content.title}</h1>

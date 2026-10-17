@@ -31,6 +31,12 @@
         <div class="post-meta">
           <#if content.date??>
             <time datetime="${content.date?string('yyyy-MM-dd')}">分享 ${content.date?string('yyyy.MM.dd')}</time>
+            <#-- Publication date of this commentary, not the source news article. -->
+            <#assign modifiedDate = effectiveModifiedDate(content)>
+            <#if modifiedDate?has_content && modifiedDate != content.date?string('yyyy-MM-dd')>
+              <span>·</span>
+              <time datetime="${modifiedDate?html}">更新 ${modifiedDate?replace('-', '.')?html}</time>
+            </#if>
           </#if>
 
           <#if content.category??>

@@ -1,5 +1,6 @@
 title=將Schema.org 結構化資料更新到blog
 date=2026-10-16
+dateModified=2026-10-17
 type=post
 status=published
 category=內建小程式
@@ -23,3 +24,14 @@ summary=先把 SEO 基礎與 Schema.org 一起做好。統一正式網域、cano
 | 分類、標籤頁 | `CollectionPage` |
 | `dateModified` | 選填，不使用建置時間 |
 | `robots.txt` | 新增 Sitemap 宣告 |
+
+
+## 增加的修改 10/17
+
+  - 未來新增的貼文都預設發文日為 dateModified
+  - 若有dateModified又和發文日不同就顯示在頁面
+  
+快照於2026-10-17
+
+**Before**
+![網站內文顯示修改日期 2026-10-17 快照](/images/2026-10-17/2026-10-17-show-modified-date-on-page.jpg)
