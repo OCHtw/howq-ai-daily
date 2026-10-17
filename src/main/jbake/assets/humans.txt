@@ -1,0 +1,13 @@
+/* TEAM */
+Project: howq AI Daily
+Author: OCHtw
+GitHub: https://github.com/OCHtw
+
+/* SITE */
+Website: https://dev.howqpon.com/
+Language: zh-TW
+Content: Build-in-public engineering logs, AI, software, Open Data, and news commentary
+Generator: JBake
+Build: Maven (Java 25)
+Hosting: GitHub Pages
+Source: https://github.com/OCHtw/howq-ai-daily
