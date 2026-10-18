@@ -5,6 +5,7 @@
 
 <#include "/includes/seo-utils.ftl">
 <#include "/includes/schema.ftl">
+<#include "/includes/breadcrumb.ftl">
 <#include "/includes/analytics.ftl">
 
 
@@ -17,5 +18,10 @@
     pageDescription=pageDescription
     pageKind=pageKind
     doc=doc
+  />
+  <@renderBreadcrumb
+    pageUrl=absoluteUrl
+    pageTitle=pageTitle
+    pageKind=pageKind
   />
 </#macro>
