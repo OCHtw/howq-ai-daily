@@ -1,4 +1,4 @@
-title=除了robots.txt還有ai.txt、humans.txt、llms.txt可以關注
+title=啟用了GSC與GA4
 date=2026-10-18
 dateModified=2026-10-18
 type=post
