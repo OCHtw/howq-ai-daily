@@ -85,9 +85,18 @@ Google 建議 `Article` 提供以下比例的高解析度圖片：
 
 依據網站的日誌、新聞、主題分類，自動生成階層式的 `BreadcrumbList`，不必每篇 Markdown 文章都手動設定。
 
+![通過Google Rich Results Test 的 2026-10-18 快照](/images/2026-10-18/2026-10-18-rich-result-test-pass.jpg)
+
+
 ### 3\. 網站識別與作者資訊
 
 首頁設定適當的 `Organization` 或 `Person` Schema，搭配 Logo、作者連結和網站名稱，有利於 Google 辨認網站身分。
+
+
+## 後續的調整
+
+修改檢測問題：已將日期格式自動生成為加上台灣時間預設零點零分。
+
 
 
 
