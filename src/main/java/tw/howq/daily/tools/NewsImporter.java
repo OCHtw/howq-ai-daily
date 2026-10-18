@@ -105,6 +105,17 @@ public final class NewsImporter {
         header(markdown, "source_url", source.toString());
         header(markdown, "image", image);
         header(markdown, "summary", description);
+        // These fields are independent of summary and are intentionally left blank.
+        // They only render in HTML/JSON-LD after the author fills them in.
+        header(markdown, "tldr1", "");
+        header(markdown, "tldr2", "");
+        header(markdown, "tldr3", "");
+        header(markdown, "faq1Question", "");
+        header(markdown, "faq1Answer", "");
+        header(markdown, "faq2Question", "");
+        header(markdown, "faq2Answer", "");
+        header(markdown, "faq3Question", "");
+        header(markdown, "faq3Answer", "");
         header(markdown, "preview", description);
         markdown.append("~~~~~~\n\n");
         markdown.append("<!-- TODO: 這裡寫你的小編短評。檢查標題、摘要、分類、圖片授權後，改 status=published。 -->\n\n");

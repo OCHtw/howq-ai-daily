@@ -6,7 +6,9 @@
   <meta name="description" content="${(content.summary)!config.site_description}">
   <title>${content.title} — ${config.site_title}</title>
   <link rel="stylesheet" href="${content.rootpath}css/site.css">
+  <link rel="stylesheet" href="${content.rootpath}css/article-extras.css">
   <#include "includes/seo-head.ftl">
+  <#include "includes/article-extras.ftl">
   <@renderSeo
     pageUri=(content.uri!"")
     pageTitle=(content.title!config.site_title)
@@ -58,6 +60,9 @@
 
         ${content.body}
       </div>
+
+      <#-- Preserve the existing summary/commentary order. New TL;DR is separate. -->
+      <@renderTldr doc=content />
 
       <section class="news-source-preview">
         <div class="news-source-meta">
@@ -124,6 +129,7 @@
         </#if>
       </section>
 
+      <@renderFaq doc=content />
       <@renderPostTags
         tagNames=(content.tags![])
         rootPath=(content.rootpath!"")

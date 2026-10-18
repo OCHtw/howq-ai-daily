@@ -1,0 +1,56 @@
+/* Optional TL;DR and FAQ blocks. This stylesheet is separate from site.css. */
+.article-tldr {
+  margin: 1.4rem 0 1.8rem;
+  padding: 1.1rem 1.3rem;
+  border: 1px solid #dce4b8;
+  border-left: 4px solid #a7b719;
+  border-radius: 12px;
+  background: #f8faef;
+  color: #283226;
+}
+.article-tldr h2 {
+  font-size: 1.02rem;
+  margin: 0 0 .55rem;
+  line-height: 1.5;
+}
+.article-tldr ol {
+  margin: 0;
+  padding-left: 1.45rem;
+  line-height: 1.8;
+}
+.article-tldr li {
+  padding-left: .2rem;
+  overflow-wrap: anywhere;
+}
+.article-tldr li + li {
+  margin-top: .55rem;
+}
+.article-tldr li::marker {
+  font-weight: 700;
+  color: #607b31;
+}
+.article-faq {
+  margin: 2.2rem 0 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8df;
+}
+.article-faq > h2 {
+  font-size: 1.35rem;
+  margin: 0 0 1rem;
+}
+.article-faq-item + .article-faq-item {
+  margin-top: 1.25rem;
+}
+.article-faq-item h3 {
+  margin: 0 0 .4rem;
+  font-size: 1.05rem;
+}
+.article-faq-item p {
+  margin: 0;
+  line-height: 1.85;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 640px) {
+  .article-tldr { padding: .9rem 1rem; }
+}

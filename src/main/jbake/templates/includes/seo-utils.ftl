@@ -46,3 +46,47 @@
   </#if>
   <#return "">
 </#function>
+
+<#--
+  The metadata format is single-line key=value, so use faq1Question/faq1Answer,
+  faq2Question/faq2Answer, etc. Up to ten pairs are supported.
+  Incomplete or whitespace-only pairs are ignored.
+  No changes are required in existing Markdown files.
+-->
+<#function faqPairs doc>
+  <#local pairs = []>
+  <#list 1..10 as i>
+    <#local qKey = "faq" + i + "Question">
+    <#local aKey = "faq" + i + "Answer">
+    <#local question = (doc[qKey]!"")?string?trim>
+    <#local answer = (doc[aKey]!"")?string?trim>
+    <#if question?has_content && answer?has_content>
+      <#local pairs = pairs + [{"question": question, "answer": answer}]>
+    </#if>
+  </#list>
+  <#return pairs>
+</#function>
+
+<#--
+  An ordered TL;DR is independent of summary. New drafts use tldr1...tldr3,
+  up to tldr10. Empty entries are skipped and renumbered at render time.
+  Backward compatibility: a single pre-existing tldr= line becomes one point
+  only if no numbered tldr fields have content.
+-->
+<#function tldrPoints doc>
+  <#local points = []>
+  <#list 1..10 as i>
+    <#local key = "tldr" + i>
+    <#local point = (doc[key]!"")?string?trim>
+    <#if point?has_content>
+      <#local points = points + [point]>
+    </#if>
+  </#list>
+  <#if points?size == 0>
+    <#local legacy = (doc.tldr!"")?string?trim>
+    <#if legacy?has_content>
+      <#local points = [legacy]>
+    </#if>
+  </#if>
+  <#return points>
+</#function>

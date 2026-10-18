@@ -1,12 +1,18 @@
 <#--
-  Stage 1 JSON-LD. Auto-detect post/news/page/newsindex/index/tag/tagsindex.
+  Auto-detect post/news/page/newsindex/index/tag/tagsindex.
   Expects functions from includes/seo-utils.ftl to be loaded first.
-  This does not claim that a commentary about someone else's news is original reporting.
+  Numbered TL;DR fields create an independent WebPageElement with an ItemList
+  (there is no Schema.org TLDR type); FAQ pairs create an FAQPage node.
+  Empty values create neither visible elements nor JSON-LD nodes.
 -->
 <#macro renderSchema pageUrl pageTitle pageDescription="" pageKind="" doc={}>
   <#local homeUrl = canonicalUrl("")>
   <#local kind = (pageKind!"")?string>
   <#local isArticle = (kind == "post" || kind == "news")>
+  <#local tldrItems = tldrPoints(doc)>
+  <#local faqList = faqPairs(doc)>
+  <#local hasTldr = isArticle && tldrItems?has_content>
+  <#local hasFaq = isArticle && faqList?size gt 0>
   <#local webPageType = "WebPage">
   <#if kind == "newsindex" || kind == "tagsindex" || kind == "tag">
     <#local webPageType = "CollectionPage">
@@ -46,7 +52,8 @@
       "description": "${jsonEscape(pageDescription)}",
       "inLanguage": "zh-TW",
       "isPartOf": {"@id": "${jsonEscape(homeUrl + "#website")}"}<#if isArticle>,
-      "mainEntity": {"@id": "${jsonEscape(pageUrl + "#article")}"}</#if>
+      "mainEntity": {"@id": "${jsonEscape(pageUrl + "#article")}"}</#if><#if hasTldr || hasFaq>,
+      "hasPart": [<#if hasTldr>{"@id": "${jsonEscape(pageUrl + "#tldr")}"}</#if><#if hasTldr && hasFaq>, </#if><#if hasFaq>{"@id": "${jsonEscape(pageUrl + "#article-faq")}"}</#if>]</#if>
     }<#if isArticle>,
     {
       "@type": "BlogPosting",
@@ -72,6 +79,50 @@
         }</#if><#if (doc.source_date!"")?string?trim?has_content>,
         "datePublished": "${jsonEscape(doc.source_date)}"</#if>
       }</#if>
+    }</#if><#if hasTldr>,
+    {
+      "@type": "WebPageElement",
+      "@id": "${jsonEscape(pageUrl + "#tldr")}",
+      "name": "TL;DR · 重點摘要",
+      "cssSelector": "#article-tldr",
+      "isPartOf": {"@id": "${jsonEscape(pageUrl + "#webpage")}"},
+      "mainEntity": {"@id": "${jsonEscape(pageUrl + "#tldr-list")}"}
+    },
+    {
+      "@type": "ItemList",
+      "@id": "${jsonEscape(pageUrl + "#tldr-list")}",
+      "name": "文章重點摘要",
+      "itemListOrder": "https://schema.org/ItemListOrderAscending",
+      "numberOfItems": ${tldrItems?size},
+      "itemListElement": [
+        <#list tldrItems as point>
+        {
+          "@type": "ListItem",
+          "position": ${point?index + 1},
+          "name": "${jsonEscape(point)}"
+        }<#sep>,</#sep>
+        </#list>
+      ]
+    }</#if><#if hasFaq>,
+    {
+      "@type": "FAQPage",
+      "@id": "${jsonEscape(pageUrl + "#article-faq")}",
+      "url": "${jsonEscape(pageUrl + "#article-faq")}",
+      "name": "常見問題",
+      "inLanguage": "zh-TW",
+      "isPartOf": {"@id": "${jsonEscape(pageUrl + "#webpage")}"},
+      "mainEntity": [
+        <#list faqList as faq>
+        {
+          "@type": "Question",
+          "name": "${jsonEscape(faq.question)}",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "${jsonEscape(faq.answer)}"
+          }
+        }<#sep>,</#sep>
+        </#list>
+      ]
     }</#if>
   ]
 }
