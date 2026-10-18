@@ -21,7 +21,9 @@
       <#list items as item>
         <section class="article-faq-item">
           <h3>${item.question?html}</h3>
-          <p>${item.answer?html}</p>
+          <#-- FAQ answers are trusted author-maintained metadata; preserve inline HTML links and emphasis.
+               Do not render content from untrusted users here without server-side HTML sanitization. -->
+          <div class="article-faq-answer">${item.answer}</div>
         </section>
       </#list>
     </section>

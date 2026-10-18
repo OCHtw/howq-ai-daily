@@ -45,11 +45,25 @@
   margin: 0 0 .4rem;
   font-size: 1.05rem;
 }
-.article-faq-item p {
-  margin: 0;
+.article-faq-answer {
   line-height: 1.85;
-  white-space: pre-line;
   overflow-wrap: anywhere;
+}
+.article-faq-answer p {
+  margin: 0 0 .65rem;
+}
+.article-faq-answer a {
+  color: #41682f;
+  text-decoration: underline;
+  text-underline-offset: .15em;
+}
+.article-faq-answer ul,
+.article-faq-answer ol {
+  margin: .4rem 0 .65rem;
+  padding-left: 1.6rem;
+}
+.article-faq-answer li + li {
+  margin-top: .3rem;
 }
 @media (max-width: 640px) {
   .article-tldr { padding: .9rem 1rem; }
