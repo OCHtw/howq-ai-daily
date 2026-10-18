@@ -5,6 +5,19 @@
   (there is no Schema.org TLDR type); FAQ pairs create an FAQPage node.
   Empty values create neither visible elements nor JSON-LD nodes.
 -->
+<#--
+  Date-only metadata is interpreted as midnight in Taiwan for JSON-LD only.
+  Do not change visible date labels, Markdown files, or already complete
+  date-time values. +08:00 is Asia/Taipei's offset.
+-->
+<#function schemaDateTime rawDate="">
+  <#local value = (rawDate!"")?string?trim>
+  <#if value?matches(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$")>
+    <#return value + "T00:00:00+08:00">
+  </#if>
+  <#return value>
+</#function>
+
 <#macro renderSchema pageUrl pageTitle pageDescription="" pageKind="" doc={}>
   <#local homeUrl = canonicalUrl("")>
   <#local kind = (pageKind!"")?string>
@@ -65,8 +78,8 @@
       "mainEntityOfPage": {"@id": "${jsonEscape(pageUrl + "#webpage")}"},
       "author": {"@id": "${jsonEscape(homeUrl + "#author")}"},
       "publisher": {"@id": "${jsonEscape(homeUrl + "#publisher")}"}<#if doc.date??>,
-      "datePublished": "${doc.date?string('yyyy-MM-dd')}"</#if><#if effectiveModifiedDate(doc)?has_content>,
-      "dateModified": "${jsonEscape(effectiveModifiedDate(doc))}"</#if><#if (doc.category!"")?has_content>,
+      "datePublished": "${jsonEscape(schemaDateTime(doc.date?string('yyyy-MM-dd')))}"</#if><#if effectiveModifiedDate(doc)?has_content>,
+      "dateModified": "${jsonEscape(schemaDateTime(effectiveModifiedDate(doc)))}"</#if><#if (doc.category!"")?has_content>,
       "articleSection": "${jsonEscape(doc.category)}"</#if><#if doc.tags?? && doc.tags?has_content>,
       "keywords": [<#list doc.tags as topic>"${jsonEscape(topic)}"<#sep>, </#sep></#list>]</#if><#if kind == "post" && (doc.cover!"")?string?trim?has_content>,
       "image": "${jsonEscape(absoluteAssetUrl(doc.cover))}"</#if><#if kind == "news" && (doc.source_url!"")?string?trim?has_content>,
