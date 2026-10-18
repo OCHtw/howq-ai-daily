@@ -1,6 +1,6 @@
 title=網站廠商說已完成 GEO？完整驗收指南一次看
 date=2026-10-17
-dateModified=2026-10-17
+dateModified=2026-10-18
 source_date=2026-09-14
 type=news
 status=published
@@ -31,15 +31,13 @@ preview=網站完成 GEO 改版後，該怎麼驗收？本文整理四大驗收�
 
 | 工具 | 用途 | 對應驗收層面 |
 |---|---|---|
-| Google Rich Results Test | 驗證 Schema 結構化資料是否有效 | 技術層 |
-| Schema.org Validator | 檢查 JSON-LD 語法是否正確 | 技術層 |
-| PageSpeed Insights | 檢測 Core Web Vitals 與網站速度分數 | 技術層 |
-| Google Search Console | 監測曝光、點擊、索引狀態、AI 搜尋相關曝光 | 數據層 |
-| GA4 | 追蹤自然搜尋、直接流量、品牌字搜尋比例 | 流量層 |
+| <a href="https://search.google.com/test/rich-results?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">Google Rich Results Test ↗</a> | 驗證 Schema 結構化資料是否有效 | 技術層 |
+| <a href="https://validator.schema.org/?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">Schema.org Validator ↗</a> | 檢查 JSON-LD 語法是否正確 | 技術層 |
+| <a href="https://pagespeed.web.dev/?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">Schema.org Validator ↗</a> | 檢測 Core Web Vitals 與網站速度分數 | 技術層 |
+| <a href="https://search.google.com/search-console?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">Google Search Console ↗</a>  | 監測曝光、點擊、索引狀態、AI 搜尋相關曝光 | 數據層 |
+| <a href="https://analytics.google.com/?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">GA4 ↗</a>  | 追蹤自然搜尋、直接流量、品牌字搜尋比例 | 流量層 |
 | ChatGPT | 手動測試品牌／服務相關查詢的 AI 引用狀況 | AI 引用層 |
 | Perplexity | 手動測試品牌／服務相關查詢的 AI 引用狀況 | AI 引用層 |
-
-
 
 
 > 感覺要測的事情有點多，小編是不是要請AI大大弄的代理去每週測試數據啊？還是有現成可用
