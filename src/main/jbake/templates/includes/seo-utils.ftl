@@ -31,6 +31,29 @@
   <#return (value!"")?string?json_string?replace("<", r"\u003C")>
 </#function>
 
+<#--
+  Explicit, user-selected images only; never guess from Markdown body.
+  Logs use cover; news uses cover when set, otherwise its existing image field.
+  This is the single source for both BlogPosting.image and og:image.
+-->
+<#function articleImageUrl doc kind="">
+  <#local pageKind = (kind!"")?string>
+  <#if pageKind != "post" && pageKind != "news">
+    <#return "">
+  </#if>
+  <#local cover = (doc.cover!"")?string?trim>
+  <#if cover?has_content>
+    <#return absoluteAssetUrl(cover)>
+  </#if>
+  <#if pageKind == "news">
+    <#local newsImage = (doc.image!"")?string?trim>
+    <#if newsImage?has_content>
+      <#return absoluteAssetUrl(newsImage)>
+    </#if>
+  </#if>
+  <#return "">
+</#function>
+
 <#-- For older Markdown without dateModified, use the original publication date.
      This does not modify any Markdown source file. -->
 <#function effectiveModifiedDate doc>

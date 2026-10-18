@@ -22,6 +22,7 @@
   <#local homeUrl = canonicalUrl("")>
   <#local kind = (pageKind!"")?string>
   <#local isArticle = (kind == "post" || kind == "news")>
+  <#local imageUrl = articleImageUrl(doc, kind)>
   <#local tldrItems = tldrPoints(doc)>
   <#local faqList = faqPairs(doc)>
   <#local hasTldr = isArticle && tldrItems?has_content>
@@ -81,8 +82,8 @@
       "datePublished": "${jsonEscape(schemaDateTime(doc.date?string('yyyy-MM-dd')))}"</#if><#if effectiveModifiedDate(doc)?has_content>,
       "dateModified": "${jsonEscape(schemaDateTime(effectiveModifiedDate(doc)))}"</#if><#if (doc.category!"")?has_content>,
       "articleSection": "${jsonEscape(doc.category)}"</#if><#if doc.tags?? && doc.tags?has_content>,
-      "keywords": [<#list doc.tags as topic>"${jsonEscape(topic)}"<#sep>, </#sep></#list>]</#if><#if kind == "post" && (doc.cover!"")?string?trim?has_content>,
-      "image": "${jsonEscape(absoluteAssetUrl(doc.cover))}"</#if><#if kind == "news" && (doc.source_url!"")?string?trim?has_content>,
+      "keywords": [<#list doc.tags as topic>"${jsonEscape(topic)}"<#sep>, </#sep></#list>]</#if><#if imageUrl?has_content>,
+      "image": "${jsonEscape(imageUrl)}"</#if><#if kind == "news" && (doc.source_url!"")?string?trim?has_content>,
       "isBasedOn": {
         "@type": "CreativeWork",
         "url": "${jsonEscape(doc.source_url)}"<#if (doc.source_name!"")?string?trim?has_content>,
