@@ -4,6 +4,7 @@ dateModified=2026-10-18
 type=post
 status=published
 category=內建小程式
+cover=/images/2026-10-18/2026-10-18-rich-result-test-pass.jpg
 tags=GEO,Blog改版
 summary=Schema.org 還提供了數百種結構化資料類型。不同的網站性質，會對應到不同的標記策略。實作正確的結構化資料，最大的好處是能解鎖 Google 搜尋結果上各種吸睛的複合式搜尋結果（Rich Results）。
 faq1Question=Google官方支援的搜尋結果類型總共有哪些？
@@ -95,8 +96,8 @@ Google 建議 `Article` 提供以下比例的高解析度圖片：
 
 ## 後續的調整
 
-修改檢測問題：已將日期格式自動生成為加上台灣時間預設零點零分。
-
+  * 修改檢測問題：已將日期格式自動生成為加上台灣時間預設零點零分。
+  * 若日誌或新聞有圖片就設定到schema image。
 
 
 
