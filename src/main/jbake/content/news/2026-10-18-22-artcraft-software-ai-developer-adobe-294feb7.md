@@ -1,5 +1,5 @@
 title=AI 讓重建成熟軟體的門檻降低？開發者用 Claude 打造 7 款 Adobe 替代品，揚言數月內追上 99% 功能 | TechOrange 科技報橘
-date=2026-10-16
+date=2026-10-18
 source_date=2026-10-08
 type=news
 status=published

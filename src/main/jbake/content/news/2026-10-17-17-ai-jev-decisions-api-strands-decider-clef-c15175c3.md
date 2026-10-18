@@ -1,5 +1,5 @@
 title=Jev 爆紅後 Strands Decider、Clef 接連登場，決策模型正走出哪些不同路線？
-date=2026-10-16
+date=2026-10-17
 source_date=2026-10-02
 type=news
 status=published
