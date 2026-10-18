@@ -8,8 +8,6 @@ tags=GEO,Blog改版
 summary=提交申請給 Google Search Console（GSC）和 Google Analytics 4（GA4）都啟用，因為它們負責不同的事情
 ~~~~~~
 
-提交申請給 Google Search Console（GSC）和 Google Analytics 4（GA4）都啟用，因為它們負責不同的事情
-
 
 | 功能 | Google Search Console | GA4 |
 |---|---|---|
