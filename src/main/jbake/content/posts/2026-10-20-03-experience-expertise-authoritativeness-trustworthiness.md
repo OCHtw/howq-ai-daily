@@ -79,7 +79,7 @@ Google 特別強調：**Trust（可信度）是四者中最重要的。**
   "@type": "Person",
   "@id": "https://ochtw.com/#person",
   "name": "OCHtw",
-  "url": "https://www.linkedin.com/in/hsinwei-chen-tw",
+  "url": "https://dev.howqpon.com/about.html",
   "sameAs": [
     "https://github.com/OCHtw"
   ]
