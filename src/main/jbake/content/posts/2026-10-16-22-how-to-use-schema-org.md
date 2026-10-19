@@ -3,7 +3,7 @@ date=2026-10-16
 type=post
 status=published
 category=Project Actions
-tags=GEO,Insight
+tags=GEO,Insight,專案產出
 summary=Schema.org 是描述**實體（Entity）、內容（Content）、關係（Relationship）與來源（Provenance）**的結構化語意詞彙，目前常被用來寫給AI搜尋的格式。
 ~~~~~~
 
