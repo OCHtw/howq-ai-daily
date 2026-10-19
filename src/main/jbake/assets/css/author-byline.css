@@ -1,0 +1,15 @@
+/* A quiet, readable author attribution shared by posts and news commentary. */
+.author-byline {
+  margin: 6px 0 18px;
+  color: var(--text-secondary);
+  font-size: .88rem;
+  line-height: 1.6;
+}
+.author-byline a {
+  color: var(--text-primary);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--brand-soft-active);
+  text-underline-offset: .2em;
+}
+.author-byline a:hover { color: var(--brand-action); }

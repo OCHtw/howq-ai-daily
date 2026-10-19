@@ -7,8 +7,10 @@
   <title>${content.title} — ${config.site_title}</title>
   <link rel="stylesheet" href="${content.rootpath}css/site.css">
   <link rel="stylesheet" href="${content.rootpath}css/article-extras.css">
+  <link rel="stylesheet" href="${content.rootpath}css/author-byline.css">
   <#include "includes/seo-head.ftl">
   <#include "includes/article-extras.ftl">
+  <#include "includes/author-byline.ftl">
   <#include "includes/news-source-url.ftl">
   <@renderSeo
     pageUri=(content.uri!"")
@@ -50,6 +52,7 @@
 
         <p class="eyebrow">MY NOTE</p>
         <h1>小編短評</h1>
+        <@renderAuthorByline rootPath=(content.rootpath!"") role="news" />
       </header>
 
       <div class="article-body news-review-body">

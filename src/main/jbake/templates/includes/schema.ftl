@@ -20,6 +20,22 @@
 
 <#macro renderSchema pageUrl pageTitle pageDescription="" pageKind="" doc={}>
   <#local homeUrl = canonicalUrl("")>
+  <#-- Global author identity. Name remains site.author for backward compatibility. -->
+  <#local authorId = (config.site_author_id!(homeUrl + "#author"))?string?trim>
+  <#if !authorId?has_content>
+    <#local authorId = homeUrl + "#author">
+  </#if>
+  <#local authorUrl = (config.site_author_url!canonicalUrl("about.html"))?string?trim>
+  <#if !authorUrl?has_content>
+    <#local authorUrl = canonicalUrl("about.html")>
+  </#if>
+  <#local authorSameAs = []>
+  <#list (config.site_author_sameas!"")?string?split(";") as rawUrl>
+    <#local sameAsUrl = rawUrl?trim>
+    <#if sameAsUrl?has_content>
+      <#local authorSameAs = authorSameAs + [sameAsUrl]>
+    </#if>
+  </#list>
   <#local kind = (pageKind!"")?string>
   <#local isArticle = (kind == "post" || kind == "news")>
   <#local imageUrl = articleImageUrl(doc, kind)>
@@ -54,9 +70,10 @@
     },
     {
       "@type": "Person",
-      "@id": "${jsonEscape(homeUrl + "#author")}",
+      "@id": "${jsonEscape(authorId)}",
       "name": "${jsonEscape(config.site_author!"OCHtw")}",
-      "sameAs": ["https://github.com/OCHtw"]
+      "url": "${jsonEscape(authorUrl)}"<#if authorSameAs?has_content>,
+      "sameAs": [<#list authorSameAs as sameAsUrl>"${jsonEscape(sameAsUrl)}"<#sep>, </#list>]</#if>
     },
     {
       "@type": "${webPageType}",
@@ -77,7 +94,7 @@
       "description": "${jsonEscape(doc.summary!pageDescription)}",
       "inLanguage": "zh-TW",
       "mainEntityOfPage": {"@id": "${jsonEscape(pageUrl + "#webpage")}"},
-      "author": {"@id": "${jsonEscape(homeUrl + "#author")}"},
+      "author": {"@id": "${jsonEscape(authorId)}"},
       "publisher": {"@id": "${jsonEscape(homeUrl + "#publisher")}"}<#if doc.date??>,
       "datePublished": "${jsonEscape(schemaDateTime(doc.date?string('yyyy-MM-dd')))}"</#if><#if effectiveModifiedDate(doc)?has_content>,
       "dateModified": "${jsonEscape(schemaDateTime(effectiveModifiedDate(doc)))}"</#if><#if (doc.category!"")?has_content>,

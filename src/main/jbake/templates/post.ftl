@@ -7,8 +7,10 @@
   <title>${content.title} — ${config.site_title}</title>
   <link rel="stylesheet" href="${content.rootpath}css/site.css">
   <link rel="stylesheet" href="${content.rootpath}css/article-extras.css">
+  <link rel="stylesheet" href="${content.rootpath}css/author-byline.css">
   <#include "includes/seo-head.ftl">
   <#include "includes/article-extras.ftl">
+  <#include "includes/author-byline.ftl">
   <@renderSeo
     pageUri=(content.uri!"")
     pageTitle=(content.title!config.site_title)
@@ -39,6 +41,7 @@
           <#if content.category??><span>${content.category}</span></#if>
         </div>
         <h1>${content.title}</h1>
+        <@renderAuthorByline rootPath=(content.rootpath!"") role="post" />
         <#if content.summary??><p class="article-lead">${content.summary}</p></#if>
       </header>
       <@renderTldr doc=content />
