@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="${content.rootpath}css/article-extras.css">
   <#include "includes/seo-head.ftl">
   <#include "includes/article-extras.ftl">
+  <#include "includes/news-source-url.ftl">
   <@renderSeo
     pageUri=(content.uri!"")
     pageTitle=(content.title!config.site_title)
@@ -20,6 +21,7 @@
 <body>
   <#assign rootPath = content.rootpath>
   <#assign currentSection = "news">
+  <#assign trackedSourceUrl = newsSourceUrl(content.source_url!"")>
 
   <#include "includes/header.ftl">
   <#include "includes/tag-ui.ftl">
@@ -78,7 +80,7 @@
         <h2>
           <#if content.source_url??>
             <a
-              href="${content.source_url?html}"
+              href="${trackedSourceUrl?html}"
               target="_blank"
               rel="noopener noreferrer"
             >${content.title?html}</a>
@@ -97,7 +99,7 @@
           <#if content.source_url??>
             <a
               class="news-preview-image-link"
-              href="${content.source_url?html}"
+              href="${trackedSourceUrl?html}"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="開啟完整新聞"
@@ -122,7 +124,7 @@
         <#if content.source_url??>
           <a
             class="text-link news-source-link"
-            href="${content.source_url?html}"
+            href="${trackedSourceUrl?html}"
             target="_blank"
             rel="noopener noreferrer"
           >閱讀完整新聞 →</a>
