@@ -83,7 +83,7 @@ public final class NewsImporter {
 
         // This is intentionally a manually maintained category, not a guessed classification.
         String category = args.length >= 2 && !args[1].isBlank() ? args[1].trim() : "未分類";
-        Path outDir = Path.of("src", "main", "jbake", "content", "news");
+        Path outDir = Path.of("src", "main", "jbake", "content", "news", "draft");
         Files.createDirectories(outDir);
         String basename = importedAt.format(FILE_DATE_HOUR) + "-" + slug(source);
         Path target = outDir.resolve(basename + ".md");
