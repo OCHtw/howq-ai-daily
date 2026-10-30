@@ -1,0 +1,85 @@
+/* News article only. Keeps shared site.css, article-extras.css and post layout unchanged. */
+.news-review-header h1 {
+  margin: 12px 0 18px;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  line-height: 1.16;
+  letter-spacing: -.035em;
+  overflow-wrap: anywhere;
+}
+
+.news-origin-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin: 0 0 8px;
+  color: var(--text-secondary);
+  font-size: .88rem;
+}
+
+.news-summary {
+  max-width: 740px;
+  margin: 26px 0 0;
+  color: var(--text-secondary);
+  font-size: 1.12rem;
+  line-height: 1.85;
+  overflow-wrap: anywhere;
+}
+
+.news-commentary {
+  margin: 36px 0 24px;
+}
+
+.news-commentary-title {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.45;
+  letter-spacing: -.025em;
+}
+
+.news-review-body {
+  padding-top: 8px;
+  padding-bottom: 0;
+}
+
+.news-review-body > :first-child {
+  margin-top: .6em;
+}
+
+.news-source-preview .news-source-heading {
+  margin: 0 0 8px;
+  font-size: 1.3rem;
+  letter-spacing: -.015em;
+  line-height: 1.5;
+}
+
+.news-source-preview .news-source-title {
+  margin: 14px 0 16px;
+  font-size: clamp(1.3rem, 2.5vw, 2rem);
+  line-height: 1.35;
+  letter-spacing: -.025em;
+  overflow-wrap: anywhere;
+}
+
+.news-source-preview .news-source-title a {
+  text-decoration: none;
+}
+
+.news-source-preview .news-source-title a:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+@media (max-width: 640px) {
+  .news-origin-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin: 0 0 8px;
+  color: var(--text-secondary);
+  font-size: .88rem;
+}
+
+.news-summary { margin-top: 22px; font-size: 1.04rem; }
+  .news-commentary { margin-top: 28px; }
+  .news-commentary-title { font-size: 1.35rem; }
+}
