@@ -5,7 +5,7 @@ source_date=2026-10-19
 type=news
 status=published
 category=AI影響
-tags=商模
+tags=AI,商模
 source_name=iThome
 source_url=https://www.ithome.com.tw/news/179786
 image=https://www.ithome.com.tw/sites/default/files/field/image/_image_0.jpg
@@ -22,5 +22,8 @@ faq3Answer=
 preview=網路爬蟲即使通過身分驗證，若反覆忽略網站禁止抓取的規則，或收到HTTP 429後仍不減少請求，信任評等就可能下降，Cloudflare目前在內部評估爬蟲長期行為，未來將開放網站依評等管理流量。
 ~~~~~~
 
+近期Cloudflare一直在AI時代爭話語權。
+
 > 內容創作者的心血，若無法得到適度回報(不單純指金錢)，長期會讓消磨掉動力。說不要就是不要！！
+
 
