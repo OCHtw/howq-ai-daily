@@ -4,7 +4,7 @@ dateModified=2026-10-31
 type=post
 status=published
 category=Project Actions
-cover=/images/2026-10-31/howqpon-web-application-architecture-designs-1-overview.jpg
+cover=
 tags=專案產出,系統設計
 summary=重新設計系統架構。從常見的雲端網頁服務架構即時存取後端API(通常會直接讀取資料)，調整成比較麻煩的前端網頁以預先產生為主。即使需要讀取最新資料，然後被轉成非同步方式，取得所需內容。優點是假設 Web 已遭入侵，仍透過網路隔離、最小權限與非同步架構，限制攻擊者能造成的損害。缺點是使用者UX體驗容易不佳。
 tldr1=核心理念：即使 Web 主機遭入侵，也無法直接存取核心資料庫。
@@ -17,6 +17,8 @@ faq2Answer=無法解決，但會透過AI強化預測使用者所需網頁，並�
 faq3Question=
 faq3Answer=
 ~~~~~~
+
+![howqpon雲端網頁服務新架構規劃1](/images/2026-10-31/howqpon-web-application-architecture-designs-1-overview.jpg)
 
 **核心理念：即使 Web 主機遭入侵，也無法直接存取核心資料庫。**
 
@@ -49,5 +51,5 @@ faq3Answer=
 **改善方向：透過AI強化預測使用者所需網頁，並提前準備。**
 
   
-![howqpon雲端網頁服務新架構規劃1](/images/2026-10-31/howqpon-web-application-architecture-designs-1-overview.jpg)
+
   
