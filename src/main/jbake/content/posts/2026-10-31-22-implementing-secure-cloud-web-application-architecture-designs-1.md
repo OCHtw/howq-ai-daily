@@ -1,6 +1,6 @@
-title=重新規劃Howqpon雲端架構：安全隔離 × 輕量化 × 事件驅動 (1)
+title=Howqpon雲端架構(1)：重新規劃 安全隔離 × 輕量化 × 非同步事件驅動
 date=2026-10-31
-dateModified=2026-10-31
+dateModified=2026-11-01
 type=post
 status=published
 category=Project Actions
