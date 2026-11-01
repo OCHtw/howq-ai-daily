@@ -26,7 +26,7 @@ faq3Answer=
 
 ### 架構特色
 
-1. **零公開入口**：EC2 全部私有化，透過 Cloudflare Tunnel 進入，結合 CDN、WAF、LB 防護。
+1. **<a href="https://dev.howqpon.com/posts/2026-11-01-17-implementing-secure-cloud-web-application-architecture-designs-2.html?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">零公開入口 ↗</a>**：EC2 全部私有化，透過 Cloudflare Tunnel 進入，結合 CDN、WAF、LB 防護。
 2. **三區安全隔離**：SG-A（Web）、SG-B（快取／訊息）、SG-C（資料），各自獨立權限，降低橫向入侵風險。
 3. **最小權限設計**：Web 層僅能讀取授權快取、發布指定訊息，不能直接連接資料庫。
 4. **四層讀取加速**：CDN（L0）→ Caffeine（L1）→ Redis（L2）→ RDS（L3），減少資料庫負載與被全部撈取機率。
@@ -51,5 +51,7 @@ faq3Answer=
 **改善方向：透過AI強化預測使用者所需網頁，並提前準備。**
 
   
+### 進一步說明
 
+  * 前往最前線 **<a href="https://dev.howqpon.com/posts/2026-11-01-17-implementing-secure-cloud-web-application-architecture-designs-2.html?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">零公開入口 ↗</a>**
   
