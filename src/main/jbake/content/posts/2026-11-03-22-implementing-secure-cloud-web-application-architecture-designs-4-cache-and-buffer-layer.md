@@ -83,3 +83,12 @@ faq3Answer=
 同時保留未來透過 Redis Replica、RabbitMQ Consumer 與不同業務節點進行水平擴充的能力。
 
 > **實作關鍵**：Redis ACL、RabbitMQ 權限與 HMAC 驗證必須真正落實；資料庫交易與快取更新也需要可靠事件機制，才能避免訊息遺失或資料不一致。
+
+
+### 進一步說明
+
+  * 回到全架構預覽 **<a href="https://dev.howqpon.com/posts/2026-10-31-22-implementing-secure-cloud-web-application-architecture-designs-1.html?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">全架構 ↗</a>**
+
+  * 回到最前線 **<a href="https://dev.howqpon.com/posts/2026-11-01-17-implementing-secure-cloud-web-application-architecture-designs-2-zero-public-ingress.html?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">零公開入口 ↗</a>**
+  
+  * 回到服務門面 **<a href="https://dev.howqpon.com/posts/2026-11-02-00-implementing-secure-cloud-web-application-architecture-designs-3-lightweight-application-layer.html?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">輕量化應用層 ↗</a>**

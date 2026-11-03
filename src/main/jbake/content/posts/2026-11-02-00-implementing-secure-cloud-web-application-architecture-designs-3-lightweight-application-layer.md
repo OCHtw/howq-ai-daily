@@ -1,6 +1,6 @@
 title=Howqpon雲端架構(3)：輕量化應用層
 date=2026-11-02
-dateModified=2026-11-02
+dateModified=2026-11-03
 type=post
 status=published
 category=Project Actions
@@ -106,5 +106,10 @@ Private EC2（Security Group A）
 此設計強制放棄了「強一致性 (Strong Consistency)」，架構師必須在系統中妥善處理「最終一致性 (Eventual Consistency)」。所以讀取請求皆命中記憶體層率非100%的情況時，會陷入等待回應與髒資料海嘯，UIUX使用者體驗極差。若讓前端應用過多輪詢或WebSocket，非同步獲取最新的交易結果，也會造成倍數成長的效能壓力。
 
 
+### 進一步說明
 
+  * 回到全架構預覽 **<a href="https://dev.howqpon.com/posts/2026-10-31-22-implementing-secure-cloud-web-application-architecture-designs-1.html?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">全架構 ↗</a>**
 
+  * 回到最前線 **<a href="https://dev.howqpon.com/posts/2026-11-01-17-implementing-secure-cloud-web-application-architecture-designs-2-zero-public-ingress.html?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">零公開入口 ↗</a>**
+
+  * 前往高併發低耗能核心 **<a href="https://dev.howqpon.com/posts/2026-11-03-22-implementing-secure-cloud-web-application-architecture-designs-4-cache-and-buffer-layer.html?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">快取緩存事件層 ↗</a>**

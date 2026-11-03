@@ -1,6 +1,6 @@
 title=Howqpon雲端架構(2)：零公開入口（Zero Public Ingress）
 date=2026-11-01
-dateModified=2026-11-01
+dateModified=2026-11-03
 type=post
 status=published
 category=Project Actions
@@ -91,3 +91,11 @@ Private AWS EC2（無公開 IP）
 
 > 小編覺得唯一的缺點是會在使用者連網頁時，跳出來問你是不是機器人。這體驗差了些，不過辨識率有越來越好，對同一個可識別的連線不會一直問。
 
+
+### 進一步說明
+
+  * 回到全架構預覽 **<a href="https://dev.howqpon.com/posts/2026-10-31-22-implementing-secure-cloud-web-application-architecture-designs-1.html?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">全架構 ↗</a>**
+
+  * 前往服務門面 **<a href="https://dev.howqpon.com/posts/2026-11-02-00-implementing-secure-cloud-web-application-architecture-designs-3-lightweight-application-layer.html?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">輕量化應用層 ↗</a>**
+
+  * 前往高併發低耗能核心 **<a href="https://dev.howqpon.com/posts/2026-11-03-22-implementing-secure-cloud-web-application-architecture-designs-4-cache-and-buffer-layer.html?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">快取緩存事件層 ↗</a>**
