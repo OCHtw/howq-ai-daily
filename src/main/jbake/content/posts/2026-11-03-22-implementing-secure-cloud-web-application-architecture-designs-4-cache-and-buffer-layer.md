@@ -42,9 +42,6 @@ faq3Answer=
   Invalidate       AWS RDS
 ```
 
-快取（Cache）在技術架構中的核心作用，是將高頻存取或計算成本昂貴的資料暫存於高速介質（如記憶體），利用時間與空間局部性（Locality of Reference）短路慢速儲存介質（如磁碟或資料庫）與網路 I/O 的存取路徑。
-
-在高併發寫入情境下，傳統同步寫入資料庫（Write-Through）會受限於磁碟 I/O 與 DB 連接池瓶頸。搭配 Redis 作為 In-Memory 快取 與 訊息佇列（Message Queue, 簡稱 MQ）作為寫入 Buffer 的 Write-Behind（Write-Back）架構，核心在於將「即時線上響應」與「慢速資料持久化」徹底解耦。
 
 ### 設計特色
 

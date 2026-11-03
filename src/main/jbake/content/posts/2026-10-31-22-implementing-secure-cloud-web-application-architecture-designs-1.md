@@ -55,4 +55,9 @@ faq3Answer=
 
   * 前往最前線 **<a href="https://dev.howqpon.com/posts/2026-11-01-17-implementing-secure-cloud-web-application-architecture-designs-2-zero-public-ingress.html?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">零公開入口 ↗</a>**
 
-  * 前往運作核心 **<a href="2026-11-02-00-implementing-secure-cloud-web-application-architecture-designs-3-lightweight-application-layer.html?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">輕量化應用層 ↗</a>**
+  * 前往服務門面 **<a href="https://dev.howqpon.com/posts/2026-11-02-00-implementing-secure-cloud-web-application-architecture-designs-3-lightweight-application-layer.html?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">輕量化應用層 ↗</a>**
+
+  * 前往高併發低耗能核心 **<a href="https://dev.howqpon.com/posts/2026-11-03-22-implementing-secure-cloud-web-application-architecture-designs-4-cache-and-buffer-layer.html?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">快取緩存事件層 ↗</a>**
+  
+  
+  
