@@ -1,6 +1,6 @@
 title=Howqpon地區路由與SEO/GEO網址規劃
 date=2026-11-04
-dateModified=2026-11-04
+dateModified=2026-11-07
 type=post
 status=published
 category=Project Actions
@@ -196,3 +196,8 @@ Schema.org：
 9. **國家、語言、主機位置**：各自獨立管理。
 
 **核心方向：統一網域入口、全球唯一身分、地區獨立部署、同源 API 代理。**
+
+
+## 七、延伸強化設計
+
+1. **SLUG**：透過網址後綴增加slug，提供url可讀性，強化seo (<a href="https://dev.howqpon.com/posts/2026-11-07-06-store-url-routing-and-seo-friendly-slug-design.html?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">進一步設計店家url增加slug強化SEO/GEO效果 ↗</a>)。
