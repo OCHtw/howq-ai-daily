@@ -7,7 +7,7 @@ category=Project Actions
 cover=
 tags=專案產出,系統設計
 summary=採用「識別碼定位店家、slug 描述店家、Canonical 固定主網址」的方式。店家改名或搬遷時，保留原識別碼，讓既有連結持續有效。依Google 建議使用容易理解的描述性網址；本方案將無 slug 網址作為 Canonical，因此 slug 的主要收益是分享可讀性。
-tldr1=
+tldr1=網址包含「招牌與店名」「地區位址」，比單純編號更能表達頁面內容。幫助使用者決定是否點選，分享連結時接收方更容易理解。
 tldr2=
 tldr3=
 faq1Question=
@@ -76,14 +76,34 @@ Canonical 不會改變瀏覽器地址列。本方案讓帶 slug 的網址直接�
 
 ### 4. SEO 與連結維護優勢
 
+#### 加上 slug 的 SEO 與使用者價值
+
+加上 slug，讓網址本身就能說明「哪間店、哪個分店、位於哪裡」。Google 也建議網址使用容易理解、具有描述性的文字。
+
+例如：
+
+```text
+https://howqpon.com/tw/s/123401s/全聯行天宮店-台北市中山區
+```
+
+| 好處 | 對店家頁的價值 |
+|---|---|
+| 補充搜尋主題線索 | 網址包含「全聯」「行天宮店」「台北市中山區」，比單純編號更能表達頁面內容。 |
+| 清楚區分同品牌分店 | 使用者容易辨認這是行天宮附近的分店，減少點錯其他分店。 |
+| 幫助使用者決定是否點選 | 當網址文字被顯示時，使用者能先確認店名與地區是否符合需求。這是合理的預期效益，實際點擊改善仍需觀察。 |
+| 分享連結更容易理解 | 在文章、論壇或社群直接貼上網址時，連結本身就帶有店家資訊，接收者更容易辨識內容。 |
+
+其中，主題線索是 SEO 的輔助價值；辨識與分享則是使用者體驗的價值。加入 slug 不代表保證提高排名，也不代表增加多個獨立搜尋入口。
+
+#### 主網址與舊連結的延續性
+
 | 優勢 | 說明 |
 |---|---|
 | 集中搜尋訊號 | 使用 Canonical 表明各版本屬於同一頁，有助於將連結等訊號集中到代表網址。 |
 | 主網址穩定 | 店名或地址變更時，Canonical 維持不變，減少因描述文字更新而遷移主網址的需要。 |
 | 舊連結持續有效 | 外部文章、社群貼文、QR Code 即使使用舊 slug，仍可透過識別碼顯示最新店家資料。 |
-| 分享容易辨識 | slug 補充店名與地區，讓使用者較容易理解連結指向哪間店。 |
 
-Google 建議使用容易理解的描述性網址；本方案將無 slug 網址作為 Canonical，因此 slug 的主要收益是分享可讀性，不應將不同 slug 視為額外的獨立搜尋入口。Canonical 是偏好訊號，最終代表網址仍由搜尋引擎判定。
+本方案將無 slug 網址作為 Canonical，因此 slug 的主要收益是分享可讀性。Canonical 是偏好訊號，最終代表網址仍由搜尋引擎判定。
 
 ### 5. slug 寫錯或縮短的範例
 
@@ -130,4 +150,5 @@ https://howqpon.com/tw/s/123401s/全聯寧夏夜市店-台北市大同區
 
 - [Google：指定 Canonical 與整合重複網址](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)
 - [Google：網址結構最佳做法](https://developers.google.com/search/docs/crawling-indexing/url-structure)
+- [Google：SEO 入門指南](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)
 
