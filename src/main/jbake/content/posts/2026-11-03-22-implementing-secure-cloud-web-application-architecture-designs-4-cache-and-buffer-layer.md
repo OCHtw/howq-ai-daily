@@ -1,6 +1,6 @@
 title=Howqpon雲端架構(4)：快取與緩存事件層（Cache & Buffer）
 date=2026-11-03
-dateModified=2026-11-03
+dateModified=2026-11-07
 type=post
 status=published
 category=Project Actions
@@ -85,6 +85,10 @@ faq3Answer=
 > **實作關鍵**：Redis ACL、RabbitMQ 權限與 HMAC 驗證必須真正落實；資料庫交易與快取更新也需要可靠事件機制，才能避免訊息遺失或資料不一致。
 
 
+### 後續補充
+
+  * 回到全架構預覽 **<a href="https://dev.howqpon.com/posts/2026-11-07-05-cache-event-layer-security-validation-and-data-consistency.html?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">快取與緩存事件層：安全與一致性檢查 ↗</a>**
+
 ### 進一步說明
 
   * 回到全架構預覽 **<a href="https://dev.howqpon.com/posts/2026-10-31-22-implementing-secure-cloud-web-application-architecture-designs-1.html?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">全架構 ↗</a>**
@@ -92,3 +96,4 @@ faq3Answer=
   * 回到最前線 **<a href="https://dev.howqpon.com/posts/2026-11-01-17-implementing-secure-cloud-web-application-architecture-designs-2-zero-public-ingress.html?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">零公開入口 ↗</a>**
   
   * 回到服務門面 **<a href="https://dev.howqpon.com/posts/2026-11-02-00-implementing-secure-cloud-web-application-architecture-designs-3-lightweight-application-layer.html?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">輕量化應用層 ↗</a>**
+
