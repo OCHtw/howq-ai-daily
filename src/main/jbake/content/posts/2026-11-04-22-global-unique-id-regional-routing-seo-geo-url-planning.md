@@ -201,3 +201,6 @@ Schema.org：
 ## 七、延伸強化設計
 
 1. **SLUG**：透過網址後綴增加slug，提供url可讀性，強化seo (<a href="https://dev.howqpon.com/posts/2026-11-07-06-store-url-routing-and-seo-friendly-slug-design.html?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">進一步設計店家url增加slug強化SEO/GEO效果 ↗</a>)。
+
+2. **店家集合頁**：增加知名度低的店家曝光 (<a href="https://dev.howqpon.com/posts/2026-11-07-09-merchant-directory-seo-optimization-and-list-update-planning.html?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">店家集合頁 SEO 強化與名單更新規劃 ↗</a>)。
+
