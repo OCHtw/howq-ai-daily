@@ -26,7 +26,7 @@ preview=n8n Labs 於 11 月 10 日以研究預覽版推出開源個人 AI 代理
 
 <a href="https://github.com/n8n-io/nod?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">github / n8n / nod ↗</a>
 
-<a href="hhttps://github.com/n8n-io/nod/releases?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">github / n8n / nod / release ↗</a>
+<a href="https://github.com/n8n-io/nod/releases?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">github / n8n / nod / release ↗</a>
 
 ### 延伸閱讀
 
