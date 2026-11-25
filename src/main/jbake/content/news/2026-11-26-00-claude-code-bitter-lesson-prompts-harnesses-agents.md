@@ -1,6 +1,6 @@
 title=Claude Code’s Bitter Lesson: Prompts, Harnesses, Mods, and Agents
-date=2026-11-25
-dateModified=2026-11-25
+date=2026-11-26
+dateModified=2026-11-26
 source_date=2026-09-28
 type=news
 status=published
