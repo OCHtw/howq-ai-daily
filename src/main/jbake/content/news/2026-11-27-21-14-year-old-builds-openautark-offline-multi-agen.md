@@ -46,7 +46,6 @@ OpenAutark 的核心價值在於落實軟體工程層面的「自主自足」（
 
 
 
-跳網頁
 <a href="https://github.com/teydra/OpenAutark?utm_source=howqpon.com" target="_blank" rel="noopener noreferrer">OpenAutark GitHub ↗</a>
 
 
